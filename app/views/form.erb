@@ -9,55 +9,53 @@
     <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js" ></script>
     <script type="text/javascript" src="/messages_fi.js" ></script>
     <script type="text/javascript">
-       $(document).ready(function() {
-        $('#validated').validate({
-            rules: {
-                company: {
-                    required: true
-                },
-                email: {
-                    required: true,
-                    email: true
-                },
-                category_cards_green: {
-                    required: true
-                },
-                category_cards_red: {
-                    required: true
-                },
-                topaasia_green: {
-                    required: true
-                },
-                improvement_green: {
-                    required: true
-                },
-                lead_green: {
-                    required: true
-                },
-                topaasia_red: {
-                    required: true
-                },
-                improvement_red: {
-                    required: true
-                },
-                lead_red: {
-                    required: true
-                },
-                rating: {
-                    required: true
-                }         
+        $(document).ready(function() {
+            $('#validated').validate({
+                rules: {
+                    company: {
+                        required: true
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    category_cards_green: {
+                        required: true
+                    },
+                    category_cards_red: {
+                        required: true
+                    },
+                    topaasia_green: {
+                        required: true
+                    },
+                    improvement_green: {
+                        required: true
+                    },
+                    lead_green: {
+                        required: true
+                    },
+                    topaasia_red: {
+                        required: true
+                    },
+                    improvement_red: {
+                        required: true
+                    },
+                    lead_red: {
+                        required: true
+                    },
+                    rating: {
+                        required: true
+                    }         
 
-            },
-            highlight: function (label) {
-                $(label).closest('.control-group').removeClass('success').addClass('error');
-            },
-            success: function (label) {
-                label.text('OK').addClass('valid').closest('.control-group').removeClass('error').addClass('success');
-            }
+                },
+                highlight: function (label) {
+                    $(label).closest('.control-group').removeClass('success').addClass('error');
+                },
+                success: function (label) {
+                    label.text('OK').addClass('valid').closest('.control-group').removeClass('error').addClass('success');
+                }
+            });
         });
-
-    }); // end document.ready
-
     </script>
 </head>
 <body>
