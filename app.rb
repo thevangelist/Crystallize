@@ -1,6 +1,7 @@
 require_relative "bundle/bundler/setup"
 require "sinatra"
 require "sinatra/config_file"
+require_relative "app/lib/printer.rb"
 
 config_file "config.yml"
 set :port, 8080
