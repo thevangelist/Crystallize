@@ -6,7 +6,7 @@ require "pdfkit"
 config_file "config.yml"
 set :port, 8080
 set :bind, "0.0.0.0" # required to bind to all interfaces
-set :root, File.dirname(__FILE__)
+set :root, File.dirname(__FILE__) + "/app"
 
 helpers do
   def authenticate!
