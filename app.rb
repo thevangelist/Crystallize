@@ -6,6 +6,7 @@ require "pdfkit"
 config_file "config.yml"
 set :port, 8080
 set :bind, "0.0.0.0" # required to bind to all interfaces
+set :root, File.dirname(__FILE__)
 
 helpers do
   def authenticate!
@@ -25,12 +26,12 @@ end
 
 # Render static HTML form.
 get "/" do
-  send_file "static/form.html"
+  erb :form
 end
 
 # Create and send PDF from form data.
 post "/crystallize" do
-  html = "content"
+  html = erb :pdf
   kit = PDFKit.new(html, :page_size => "A4")
   timestamp = Time.now.strftime('%Y%m%d-%H%M%S')
   file = kit.to_file("files/submission-#{timestamp}.pdf")
