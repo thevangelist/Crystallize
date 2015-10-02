@@ -3,8 +3,8 @@
  * Locale: FI (Finnish; suomi, suomen kieli)
  */
 $.extend( $.validator.messages, {
-	required: "Kentt&auml; on pakollinen.",
-	email: "Sy&ouml;t&auml; toimiva s&auml;hk&ouml;postiosoite.",
+	required: "Kentt&auml; on pakollinen",
+	email: "Sy&ouml;t&auml; toimiva s&auml;hk&ouml;postiosoite",
 	url: "Sy&ouml;t&auml; oikea URL-osoite.",
 	date: "Sy&ouml;t&auml; oikea p&auml;iv&auml;m&auml;&auml;r&auml;.",
 	dateISO: "Sy&ouml;t&auml; oikea p&auml;iv&auml;m&auml;&auml;r&auml; muodossa VVVV-KK-PP.",
