@@ -5,6 +5,7 @@
     <title>Kiteyttäjä</title>
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     <style type="text/css">
+        /* https://github.com/chrisnager/ungrid */
         @media (min-width: 30em) {
             .row { width: 100%; display: table; table-layout: fixed; }
             .col { display: table-cell; }
@@ -19,73 +20,80 @@
             width: 600px;
             margin: 0 auto;
         }
+        button:focus, button:active, input:focus, textarea:focus { outline: none; }
         h1 { text-align: center; display: block; text-transform: uppercase; letter-spacing: 3px; margin: 0; padding: 1em 0; }
         h2, h3, h4, h5, h6 { margin: 3em 0 0.5em 0; border-bottom: 3px double #000; }
         input, textarea { width: 100%; display: block; border: 1px solid transparent; border-radius: 3px; line-height: 2em; background: #EEE; padding: 5px 10px;  }
-        input[type="text"]:focus, textarea:focus { outline: none; border: 1px solid #666; box-shadow: 0 0 2px #AAA; }
+        input[type="text"]:focus, input[type="email"]:focus, textarea:focus { outline: none; border: 1px solid #666; box-shadow: 0 0 2px #AAA; }
+        button { width: 100%; padding: 1em; background: #000; color: #FFF; margin: 3em 0 3em 0; border: 0; border-radius: 3px; cursor: pointer; }
+        button:hover { background: #444; box-shadow: 0 0 4px #AAA; }
+        button:active { background: #000; position: relative; top: 1px; outline: none; }
         footer { width: 100%; text-align: center; margin: 3em 0 0 0; padding: 1em 0; background: #442; color: #FFF; }
     </style>
 </head>
 <body>
     <div id="wrapper">
         <h1>Kiteyttäjä.</h1>
-        <h3>Gällit lähettävät koonnin pelisessiosta tähän osoitteeseen</h3>
-        <label for="email">Sähköposti</label>
-        <input type="email" name="email" id="email" />
+        <form method="post" url="/crystallize">
+            <h3>Gällit lähettävät koonnin pelisessiosta tähän osoitteeseen</h3>
+            <label for="email">Sähköposti</label>
+            <input type="email" name="email" id="email" />
 
-        <h3>Viime pelisessiossa päätetyt kokeilut (ei täytetä ensimmäisessä pelisessiossa)</h3>
-        <div class="row">
-            <div class="col"><label for="last-used-yes">Tehty</label><input type="radio" name="last-used" value="true" id="last-used-yes" /></div>
-            <div class="col"><label for="last-used-no">Tekemättä</label><input type="radio" name="last-used" value="false" id="last-used-no" /></div>
-        </div>
-
-        <h3>Pelilaudalle valikoituneet vihreiden kategorioiden kortit (pelkkä otsikko riittää)</h3>
-        <label for="category-cards-green">Vihreät kortit</label>
-        <textarea id="category-cards-green" rows="5"></textarea>
-
-        <h3>Pelilaudalle valikoituneet punaisten kategorioiden kortit (pelkkä otsikko riittää)</h3>
-        <label for="category-cards-red">Punaiset kortit</label>
-        <textarea id="category-cards-red" rows="5"></textarea>
-
-        <h3>Vihreä topaasia (pelkkä otsikko riittää)</h3>
-        <label for="topaasia-green">Topaasia</label>
-        <input type="text" name="topaasia" id="topaasia-green" />
-        <label for="improvement-green">Miten kehitämme seuraavaan pelisessioon mennessä</label>
-        <textarea id="improvement-green" rows="5"></textarea>
-        <label for="lead-green">Vetovastuu</label>
-        <input type="text" name="lead-green" id="lead-green" />
-
-        <h3>Punainen topaasia (pelkkä otsikko riittää)</h3>
-        <label for="topaasia-red">Topaasia</label>
-        <input type="text" name="topaasia-red" id="topaasia-red" />
-        <label for="improvement-red">Miten kehitämme seuraavaan pelisessioon mennessä</label>
-        <textarea id="improvement-red" rows="5"></textarea>
-        <label for="lead-red">Vetovastuu</label>
-        <input type="text" name="lead-red" id="lead-red" />
-
-        <h3>Miten hyödyllinen pelisessio oli käytettyyn aikaan nähden (1-5)</h3>
-        <div class="row">
-            <div class="col">
-                <label for="rating-1">1</label>
-                <input type="radio" name="rating" value="1" id="rating-1" />
+            <h3>Viime pelisessiossa päätetyt kokeilut (ei täytetä ensimmäisessä pelisessiossa)</h3>
+            <div class="row">
+                <div class="col"><label for="last-used-yes">Tehty</label><input type="radio" name="last-used" value="true" id="last-used-yes" /></div>
+                <div class="col"><label for="last-used-no">Tekemättä</label><input type="radio" name="last-used" value="false" id="last-used-no" /></div>
             </div>
-            <div class="col">
-                <label for="rating-2">2</label>
-                <input type="radio" name="rating" value="2" id="rating-2" />
+
+            <h3>Pelilaudalle valikoituneet vihreiden kategorioiden kortit (pelkkä otsikko riittää)</h3>
+            <label for="category-cards-green">Vihreät kortit</label>
+            <textarea id="category-cards-green" rows="5"></textarea>
+
+            <h3>Pelilaudalle valikoituneet punaisten kategorioiden kortit (pelkkä otsikko riittää)</h3>
+            <label for="category-cards-red">Punaiset kortit</label>
+            <textarea id="category-cards-red" rows="5"></textarea>
+
+            <h3>Vihreä topaasia (pelkkä otsikko riittää)</h3>
+            <label for="topaasia-green">Topaasia</label>
+            <input type="text" name="topaasia" id="topaasia-green" />
+            <label for="improvement-green">Miten kehitämme seuraavaan pelisessioon mennessä</label>
+            <textarea id="improvement-green" rows="5"></textarea>
+            <label for="lead-green">Vetovastuu</label>
+            <input type="text" name="lead-green" id="lead-green" />
+
+            <h3>Punainen topaasia (pelkkä otsikko riittää)</h3>
+            <label for="topaasia-red">Topaasia</label>
+            <input type="text" name="topaasia-red" id="topaasia-red" />
+            <label for="improvement-red">Miten kehitämme seuraavaan pelisessioon mennessä</label>
+            <textarea id="improvement-red" rows="5"></textarea>
+            <label for="lead-red">Vetovastuu</label>
+            <input type="text" name="lead-red" id="lead-red" />
+
+            <h3>Miten hyödyllinen pelisessio oli käytettyyn aikaan nähden (1-5)</h3>
+            <div class="row">
+                <div class="col">
+                    <label for="rating-1">1</label>
+                    <input type="radio" name="rating" value="1" id="rating-1" />
+                </div>
+                <div class="col">
+                    <label for="rating-2">2</label>
+                    <input type="radio" name="rating" value="2" id="rating-2" />
+                </div>
+                <div class="col">
+                    <label for="rating-3">3</label>
+                    <input type="radio" name="rating" value="3" id="rating-3" />
+                </div>
+                <div class="col">
+                    <label for="rating-4">4</label>
+                    <input type="radio" name="rating" value="4" id="rating-4" />
+                </div>
+                <div class="col">
+                    <label for="rating-5">5</label>
+                    <input type="radio" name="rating" value="5" id="rating-5" />
+                </div>
             </div>
-            <div class="col">
-                <label for="rating-3">3</label>
-                <input type="radio" name="rating" value="3" id="rating-3" />
-            </div>
-            <div class="col">
-                <label for="rating-4">4</label>
-                <input type="radio" name="rating" value="4" id="rating-4" />
-            </div>
-            <div class="col">
-                <label for="rating-5">5</label>
-                <input type="radio" name="rating" value="5" id="rating-5" />
-            </div>
-        </div>
+            <button type="submit">Lähetä tiedot & Generoi PDF</button>
+        </form>
     </div>
     <footer>Gälliwashere 2015 &copy;</footer>
 </body>
