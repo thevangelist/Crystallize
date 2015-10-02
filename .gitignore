@@ -1,2 +1,7 @@
 .idea
 .DS_Store
+config.yml
+
+# docker ruby stuff
+.bundle
+bundle
