@@ -5,11 +5,65 @@
     <title>Kiteyttäjä</title>
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="/main.css" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js" ></script>
+    <script type="text/javascript" src="/messages_fi.js" ></script>
+    <script type="text/javascript">
+       $(document).ready(function() {
+        $('#validated').validate({
+            rules: {
+                company: {
+                    required: true
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                category_cards_green: {
+                    required: true
+                },
+                category_cards_red: {
+                    required: true
+                },
+                topaasia_green: {
+                    required: true
+                },
+                improvement_green: {
+                    required: true
+                },
+                lead_green: {
+                    required: true
+                },
+                topaasia_red: {
+                    required: true
+                },
+                improvement_red: {
+                    required: true
+                },
+                lead_red: {
+                    required: true
+                },
+                rating: {
+                    required: true
+                }         
+
+            },
+            highlight: function (label) {
+                $(label).closest('.control-group').removeClass('success').addClass('error');
+            },
+            success: function (label) {
+                label.text('OK').addClass('valid').closest('.control-group').removeClass('error').addClass('success');
+            }
+        });
+
+    }); // end document.ready
+
+    </script>
 </head>
 <body>
     <div id="wrapper">
         <h1>Kiteyttäjä.</h1>
-        <form method="post" action="/crystallize">
+        <form id="validated" method="post" action="/crystallize">
 
             <h3>Ilmoita tähän yrityksesi nimi</h3>
             <label for="company">Yrityksen nimi</label>
@@ -21,27 +75,27 @@
 
             <h3>Pelilaudalle valikoituneet vihreiden kategorioiden kortit (pelkkä otsikko riittää)</h3>
             <label for="category-cards-green">Vihreät kortit</label>
-            <textarea id="category-cards-green" name="category-cards-green" rows="5"></textarea>
+            <textarea id="category-cards-green" name="category_cards_green" rows="5"></textarea>
 
             <h3>Pelilaudalle valikoituneet punaisten kategorioiden kortit (pelkkä otsikko riittää)</h3>
             <label for="category-cards-red">Punaiset kortit</label>
-            <textarea id="category-cards-red" name="category-cards-red" rows="5"></textarea>
+            <textarea id="category-cards-red" name="category_cards_red" rows="5"></textarea>
 
             <h3>Vihreä topaasia (pelkkä otsikko riittää)</h3>
             <label for="topaasia-green">Topaasia</label>
-            <input type="text" name="topaasia-green" id="topaasia-green" />
+            <input type="text" name="topaasia_green" id="topaasia-green" />
             <label for="improvement-green">Miten kehitämme seuraavaan pelisessioon mennessä</label>
-            <textarea id="improvement-green" name="improvement-green" rows="5"></textarea>
+            <textarea id="improvement-green" name="improvement_green" rows="5"></textarea>
             <label for="lead-green">Vetovastuu</label>
-            <input type="text" name="lead-green" id="lead-green" />
+            <input type="text" name="lead_green" id="lead-green" />
 
             <h3>Punainen topaasia (pelkkä otsikko riittää)</h3>
             <label for="topaasia-red">Topaasia</label>
-            <input type="text" name="topaasia-red" id="topaasia-red" />
+            <input type="text" name="topaasia_red" id="topaasia-red" />
             <label for="improvement-red">Miten kehitämme seuraavaan pelisessioon mennessä</label>
-            <textarea id="improvement-red" name="improvement-red" rows="5"></textarea>
+            <textarea id="improvement-red" name="improvement_red" rows="5"></textarea>
             <label for="lead-red">Vetovastuu</label>
-            <input type="text" name="lead-red" id="lead-red" />
+            <input type="text" name="lead_red" id="lead-red" />
 
             <h3>Miten hyödyllinen pelisessio oli käytettyyn aikaan nähden (1-5)</h3>
             <div class="row">
@@ -55,7 +109,7 @@
                 </div>
                 <div class="col">
                     <label for="rating-3">3</label>
-                    <input type="radio" name="rating" value="3" id="rating-3" />
+                    <input checked="checked" type="radio" name="rating" value="3" id="rating-3" />
                 </div>
                 <div class="col">
                     <label for="rating-4">4</label>
