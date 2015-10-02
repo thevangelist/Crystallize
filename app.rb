@@ -1,12 +1,12 @@
 require_relative "bundle/bundler/setup"
 require "sinatra"
 require "sinatra/config_file"
-require "pdfkit"
+require_relative "app/lib/printer.rb"
 
 config_file "config.yml"
 set :port, 8080
 set :bind, "0.0.0.0" # required to bind to all interfaces
-set :root, File.dirname(__FILE__)
+set :root, File.dirname(__FILE__) + "/app"
 
 helpers do
   def authenticate!
@@ -31,10 +31,7 @@ end
 
 # Create and send PDF from form data.
 post "/crystallize" do
-  html = erb :pdf
-  kit = PDFKit.new(html, :page_size => "A4")
-  timestamp = Time.now.strftime('%Y%m%d-%H%M%S')
-  file = kit.to_file("files/submission-#{timestamp}.pdf")
+  file = Printer.create_pdf(erb :pdf)
   send_file file
 end
 
