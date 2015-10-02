@@ -3,6 +3,7 @@ GEM
   specs:
     backports (3.6.6)
     multi_json (1.11.2)
+    pdfkit (0.8.2)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
@@ -25,6 +26,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  pdfkit
   sinatra
   sinatra-contrib
 

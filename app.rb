@@ -1,6 +1,7 @@
 require_relative "bundle/bundler/setup"
 require "sinatra"
 require "sinatra/config_file"
+require "pdfkit"
 
 config_file "config.yml"
 set :port, 8080
@@ -29,7 +30,11 @@ end
 
 # Create and send PDF from form data.
 post "/crystallize" do
-  "PDF"
+  html = "content"
+  kit = PDFKit.new(html, :page_size => "A4")
+  timestamp = Time.now.strftime('%Y%m%d-%H%M%S')
+  file = kit.to_file("files/submission-#{timestamp}.pdf")
+  send_file file
 end
 
 # Admin page for listing admin stuff.
