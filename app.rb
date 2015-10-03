@@ -2,6 +2,7 @@ require_relative "bundle/bundler/setup"
 require "sinatra"
 require "sinatra/config_file"
 require_relative "app/lib/printer.rb"
+require_relative "app/lib/validator.rb"
 
 config_file "config.yml"
 set :port, 8080
@@ -31,8 +32,14 @@ end
 
 # Create and send PDF from form data.
 post "/crystallize" do
-  file = Printer.create_pdf(erb :pdf)
-  send_file file
+  data = params[:crystal]
+  if Validator.valid(data)
+    html = erb(:pdf, locals: {crystal: data})
+    file = Printer.create_pdf(html)
+    send_file(file)
+  else
+    redirect "/"
+  end
 end
 
 # Admin page for listing admin stuff.

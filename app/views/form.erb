@@ -16,66 +16,66 @@
 
             <h3>Ilmoita tähän yrityksesi nimi</h3>
             <label for="company">Yrityksen nimi</label>
-            <input type="text" name="company" id="company" />
+            <input type="text" name="crystal[company]" id="company" />
 
             <h3>Gällit lähettävät koonnin pelisessiosta tähän osoitteeseen</h3>
             <label for="email">Sähköposti</label>
-            <input type="email" name="email" id="email" />
+            <input type="email" name="crystal[email]" id="email" />
 
             <h3>Pelilaudalle valikoituneet vihreiden kategorioiden kortit (pelkkä otsikko riittää)</h3>
             <label for="category-cards-green">Vihreät kortit</label>
-            <textarea id="category-cards-green" name="category_cards_green" rows="5"></textarea>
+            <textarea id="category-cards-green" name="crystal[category_cards_green]" rows="5"></textarea>
 
             <h3>Pelilaudalle valikoituneet punaisten kategorioiden kortit (pelkkä otsikko riittää)</h3>
             <label for="category-cards-red">Punaiset kortit</label>
-            <textarea id="category-cards-red" name="category_cards_red" rows="5"></textarea>
+            <textarea id="category-cards-red" name="crystal[category_cards_red]" rows="5"></textarea>
 
             <h3>Vihreä topaasia (pelkkä otsikko riittää)</h3>
             <label for="topaasia-green">Topaasia</label>
-            <input type="text" name="topaasia_green" id="topaasia-green" />
+            <input type="text" name="crystal[topaasia_green]" id="topaasia-green" />
             <label for="improvement-green">Miten kehitämme seuraavaan pelisessioon mennessä</label>
-            <textarea id="improvement-green" name="improvement_green" rows="5"></textarea>
+            <textarea id="improvement-green" name="crystal[improvement_green]" rows="5"></textarea>
             <label for="lead-green">Vetovastuu</label>
-            <input type="text" name="lead_green" id="lead-green" />
+            <input type="text" name="crystal[lead_green]" id="lead-green" />
 
             <h3>Punainen topaasia (pelkkä otsikko riittää)</h3>
             <label for="topaasia-red">Topaasia</label>
-            <input type="text" name="topaasia_red" id="topaasia-red" />
+            <input type="text" name="crystal[topaasia_red]" id="topaasia-red" />
             <label for="improvement-red">Miten kehitämme seuraavaan pelisessioon mennessä</label>
-            <textarea id="improvement-red" name="improvement_red" rows="5"></textarea>
+            <textarea id="improvement-red" name="crystal[improvement_red]" rows="5"></textarea>
             <label for="lead-red">Vetovastuu</label>
-            <input type="text" name="lead_red" id="lead-red" />
+            <input type="text" name="crystal[lead_red]" id="lead-red" />
 
             <h3>Miten hyödyllinen pelisessio oli käytettyyn aikaan nähden (1-5)</h3>
             <div class="row">
                 <div class="col">
                     <label for="rating-1">1</label>
-                    <input type="radio" name="rating" value="1" id="rating-1" />
+                    <input type="radio" name="crystal[rating]" value="1" id="rating-1" />
                 </div>
                 <div class="col">
                     <label for="rating-2">2</label>
-                    <input type="radio" name="rating" value="2" id="rating-2" />
+                    <input type="radio" name="crystal[rating]" value="2" id="rating-2" />
                 </div>
                 <div class="col">
                     <label for="rating-3">3</label>
-                    <input checked="checked" type="radio" name="rating" value="3" id="rating-3" />
+                    <input checked="checked" type="radio" name="crystal[rating]" value="3" id="rating-3" />
                 </div>
                 <div class="col">
                     <label for="rating-4">4</label>
-                    <input type="radio" name="rating" value="4" id="rating-4" />
+                    <input type="radio" name="crystal[rating]" value="4" id="rating-4" />
                 </div>
                 <div class="col">
                     <label for="rating-5">5</label>
-                    <input type="radio" name="rating" value="5" id="rating-5" />
+                    <input type="radio" name="crystal[rating]" value="5" id="rating-5" />
                 </div>
             </div>
 
             <h3>Viime pelisessiossa päätetyt kokeilut (ei täytetä ensimmäisessä pelisessiossa)</h3>
             <div class="row">
-                <div class="col"><label for="last-used-yes">Tehty</label><input type="radio" name="last_used" value="true" id="last-used-yes" /></div>
-                <div class="col"><label for="last-used-no">Tekemättä</label><input type="radio" name="last_used" value="false" id="last-used-no" /></div>
+                <div class="col"><label for="last-used-yes">Tehty</label><input type="radio" name="crystal[last_used]" value="true" id="last-used-yes" /></div>
+                <div class="col"><label for="last-used-no">Tekemättä</label><input type="radio" name="crystal[last_used]" value="false" id="last-used-no" /></div>
             </div>
-            
+
             <button type="submit">Lähetä lomake</button>
         </form>
     </div>
