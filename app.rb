@@ -3,27 +3,14 @@ require "sinatra"
 require "sinatra/config_file"
 require_relative "app/lib/printer.rb"
 require_relative "app/lib/validator.rb"
+require_relative "app/lib/auth_helper.rb"
 
 config_file "config.yml"
 set :port, 8080
 set :bind, "0.0.0.0" # required to bind to all interfaces
 set :root, File.dirname(__FILE__) + "/app"
 
-helpers do
-  def authenticate!
-    return if authorized?
-    headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
-    halt 401, "Not authorized\n"
-  end
-
-  def authorized?
-    @auth ||=  Rack::Auth::Basic::Request.new(request.env)
-    @auth.provided? and
-      @auth.basic? and
-      @auth.credentials and
-      @auth.credentials == [settings.user, settings.password]
-  end
-end
+helpers AuthHelper
 
 # Render static HTML form.
 get "/" do
