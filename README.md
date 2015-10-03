@@ -25,6 +25,10 @@ docker commit xyz google/ruby:v1
 
 
 ## Run 
+Create local folder for PDFs:
+
+`mkdir files`
+
 Install dependencies:
 
 `docker run --rm -v "$(pwd)":/app -w /app google/ruby:v1 sh -c 'bundle install --standalone'`
