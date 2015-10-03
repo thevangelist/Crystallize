@@ -43,7 +43,7 @@ $(document).ready(function(){
             $(label).closest('.control-group').removeClass('success').addClass('error');
         },
         success: function (label) {
-            label.html('&check;').addClass('valid').closest('.control-group').removeClass('error').addClass('success');
+            label.text('OK').addClass('valid').closest('.control-group').removeClass('error').addClass('success');
         }
     });
 });
