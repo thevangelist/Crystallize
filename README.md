@@ -35,4 +35,4 @@ Install dependencies:
 
 Run the app:
 
-`docker run -i -t --rm -v "$(pwd)":/app -w /app -p 8080:8080 google/ruby:v1 sh -c 'ruby app.rb'`
+`docker run -i -t --rm -v "$(pwd)":/app -w /app -p 8080:8080 google/ruby:v1 sh -c 'sh server.sh'`
