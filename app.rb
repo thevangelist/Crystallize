@@ -22,7 +22,7 @@ post "/crystallize" do
   data = params[:crystal]
   if Validator.valid(data)
     html = erb(:pdf, locals: {crystal: data})
-    file = Printer.create_pdf(html)
+    file = Printer.create_pdf(html, data[:company])
     send_file(file)
   else
     redirect "/"
