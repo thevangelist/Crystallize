@@ -1,2 +1,5 @@
 require "./app.rb"
-run App
+run Rack::URLMap.new({
+  "/" => Public,
+  "/admin" => Protected
+})

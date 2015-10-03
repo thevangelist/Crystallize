@@ -3,12 +3,15 @@ require "sinatra/base"
 require "sinatra/config_file"
 require_relative "app/lib/printer.rb"
 require_relative "app/lib/validator.rb"
-require_relative "app/lib/auth_helper.rb"
 
 class App < Sinatra::Base
+  set :root, File.dirname(__FILE__) + "/app"
+end
+
+# Public routes.
+class Public < App
   register Sinatra::ConfigFile
   config_file "config.yml"
-  set :root, File.dirname(__FILE__) + "/app"
 
   # Render static HTML form.
   get "/" do
@@ -26,10 +29,20 @@ class App < Sinatra::Base
       redirect "/"
     end
   end
+end
+
+
+# Admin routes protected with HTTP basic auth.
+class Protected < App
+  register Sinatra::ConfigFile
+  config_file "config.yml"
+
+  use Rack::Auth::Basic, "Not Authorized" do |user, password|
+    user == settings.user && password == settings.password
+  end
 
   # Admin page for listing admin stuff.
-  get "/admin" do
-    authenticate!
+  get "/" do
     "Admin page"
   end
 end
