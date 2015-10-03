@@ -10,7 +10,7 @@ body {
     background: #FAFAFA;
 }
 #wrapper {
-    width: 600px;
+    width: 700px;
     margin: 0 auto;
 }
 .error { color: red; }
@@ -29,7 +29,7 @@ button:active { background: #000; position: relative; top: 1px; outline: none; }
 .center { text-align: center; }
 .huge { font-size: 200%; }
 footer { margin: 3em 0 0 0; padding: 1em 0; background: #251ccc; color: #FFF; }
-@media(max-width: 600px) {
+@media(max-width: 700px) {
     #wrapper {
         width: 92%;
         padding: 0;
