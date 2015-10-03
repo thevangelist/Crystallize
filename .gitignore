@@ -1,7 +1,7 @@
 .idea
 .DS_Store
 config.yml
-files
+files/*.pdf
 
 # docker ruby stuff
 .bundle
