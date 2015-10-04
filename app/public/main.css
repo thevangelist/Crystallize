@@ -5,33 +5,38 @@
 }
 html, body { margin: 0; }
 body {
-    border-top: 13px double #251ccc;
-    font: 18px/40px "Raleway", sans-serif;
-    background: #FAFAFA;
+    font: 18px/40px "Work Sans", sans-serif;
+    background: url(background.jpg);
+    background-size: cover;
 }
 #wrapper {
     width: 700px;
     margin: 0 auto;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 1em 1em 3em 1em;
+    box-sizing: border-box;
 }
-.error { color: red; }
-.valid { color: green; }
+.error { color: #d44f7e; }
+.valid { color: #029793; }
+a { color: #0892b6; }
+a:hover { color: #044859; }
 button:focus, button:active, input:focus, textarea:focus { outline: none; }
-h1 { text-align: center; display: block; text-transform: uppercase; letter-spacing: 3px; margin: 0; padding: 1em 0; }
-h2, h3 { margin: 3em 0 0.5em 0; border-bottom: 3px double #000; }
-h4 { text-transform: uppercase; text-align: center; font-family: "Slackey", serif; color: #251ccc; margin: 0; }
+h1 { font-size: 50px; color: #354052; font-weight: 900; text-align: center; display: block; text-transform: uppercase; margin: 0; padding: 1em 0; }
+h2, h3 { margin: 3em 0 0.5em 0; border-bottom: 3px double #000; font-weight: 600; font-size: 16px; }
 label { cursor: pointer; clear: both; float: left; }
 input[type="text"], input[type="email"], textarea { box-sizing: border-box; width: 100%; display: block; border: 1px solid transparent; border-radius: 3px; line-height: 2em; background: #EEE; padding: 5px 10px;  }
 input[type="text"]:focus, input[type="email"]:focus, textarea:focus { outline: none; border: 1px solid #666; box-shadow: 0 0 2px #AAA; }
+input[type="radio"] { font-size: 50px; }
 textarea { max-width: 100%; max-height: 20em; }
-button { width: 100%; padding: 1em; background: #000; color: #FFF; margin: 3em 0 3em 0; border: 0; border-radius: 3px; cursor: pointer; }
-button:hover { background: #444; box-shadow: 0 0 4px #AAA; }
-button:active { background: #000; position: relative; top: 1px; outline: none; }
+button { font-size: 18px; width: 100%; padding: 1em; background: #0892b6; color: #FFF; margin: 3em 0 3em 0; border: 0; border-radius: 3px; cursor: pointer; }
+button:hover { background: #044859; box-shadow: 0 0 4px #AAA; }
+button:active { background: #0892b6; position: relative; top: 1px; outline: none; }
 .center { text-align: center; }
 .huge { font-size: 200%; }
-footer { margin: 3em 0 0 0; padding: 1em 0; background: #251ccc; color: #FFF; }
+footer { margin: 3em 0 0 0; padding: 1em 0; background: rgba(255,255,255,0.5); color: #000; }
 @media(max-width: 700px) {
     #wrapper {
         width: 92%;
-        padding: 0;
+        box-sizing: content-box;
     }
 }
