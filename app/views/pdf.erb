@@ -2,25 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Kiteyttäjä</title>
+    <title>Kiteyttäjä by Gälliwashere.com</title>
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 </head>
-<body style="font-family: sans-serif; text-align: center;">
-    <div id="wrapper">
-        <h1>Kiteyttäjän tulokset</h1>
+<body style="line-height: 1em; padding: 0; margin: 0: border: 0; font-family: sans-serif; text-align: center; color: #354052;">
+    <div>
+        <h1 style="text-transform: uppercase; font-size: 40px; padding: 1em 0;">Kiteyttäjän tulokset</h1>
 
         <h4 for="company">Yrityksen nimi</h4>
         <span><%= crystal[:company] %></span>
 
         <h4 for="email">Sähköposti</h4>
         <span><%= crystal[:email] %></span>
-        <hr/>
+        <hr style="border: 0; border-top: 3px double #A8B4D6; margin: 1em;"/>
+
         <h4 for="category-cards-green">Vihreät kortit</h4>
         <span><%= crystal[:category_cards_green] %></span>
 
         <h4 for="category-cards-red">Punaiset kortit</h4>
         <span><%= crystal[:category_cards_red] %></span>
-        <hr/>
+        <hr style="border: 0; border-top: 3px double #A8B4D6; margin: 1em;"/>
+
         <h3>Vihreä topaasia</h3>
         <h4 for="topaasia-green">Topaasia</h4>
         <span><%= crystal[:topaasia_green] %></span>
@@ -28,7 +30,8 @@
         <span><%= crystal[:improvement_green] %></span>
         <h4 for="lead-green">Vetovastuu</h4>
         <span><%= crystal[:lead_green] %></span>
-        <hr/>
+        <hr style="border: 0; border-top: 3px double #A8B4D6; margin: 1em;"/>
+
         <h3>Punainen topaasia</h3>
         <h4 for="topaasia-red">Topaasia</h4>
         <span><%= crystal[:topaasia_red] %></span>
@@ -36,14 +39,15 @@
         <span><%= crystal[:improvement_red] %></span>
         <h4 for="lead-red">Vetovastuu</h4>
         <span><%= crystal[:lead_red] %></span>
-        <hr/>
+        <hr style="border: 0; border-top: 3px double #A8B4D6; margin: 1em;"/>
+
         <h3>Viime pelisessiossa päätetyt kokeilut (ei täytetä ensimmäisessä pelisessiossa)</h3>
         <span><%= crystal[:last_used] %></span>
 
         <h3>Miten hyödyllinen pelisessio oli käytettyyn aikaan nähden (1-5)</h3>
         <span><%= crystal[:rating] %></span>
     </div>
-    <hr/>
-    <footer class="center">Gälliwashere 2015 &copy;</footer>
+    <hr style="border: 0; border-top: 3px double #A8B4D6; margin: 1em;"/>
+    <footer style="padding: 1em 0; color: #000;">We Make Organizational Development Games! - <a style="color: #354052; font-weight: bold;" href="www.galliwashere.com" title="Gälliwashere.com">Gälliwashere.com</a> 2015 &copy;</footer>
 </body>
 </html>
