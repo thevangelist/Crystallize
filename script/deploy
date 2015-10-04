@@ -1,0 +1,18 @@
+#!/bin/sh
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+git pull
+
+if [ "$1" = "cold" ]; then
+  script/setup
+fi
+
+script/update
+docker kill crystallizer-web
+docker rm crystallizer-web
+docker run --name crystallizer-web -d -v "$(pwd)":/app -w /app -p 8080:8080 crystallizer sh -c 'script/server'
+
+echo "==> Deployed"

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+: ${SERVER:=thin}
+: ${HOST:=0.0.0.0}
+: ${PORT:=8080}
+
+bundle exec rackup --server $SERVER --port $PORT --host $HOST

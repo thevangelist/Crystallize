@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+docker run --rm -v "$(pwd)":/app -w /app crystallizer sh -c 'bundle install --standalone'
+
+echo "==> Updated"

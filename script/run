@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+script/update
+
+docker run --rm -ti -v "$(pwd)":/app -w /app -p 8080:8080 crystallizer sh -c 'script/server'
