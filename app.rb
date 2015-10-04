@@ -29,6 +29,17 @@ class Public < App
       redirect "/"
     end
   end
+
+  # FIXME: This is for development purposes only.
+  #        Must be removed when going to production.
+  get "/test" do
+    data = { company: "komppania",
+             email: "meili@a.b"
+           }
+    html = erb(:pdf, locals: {crystal: data})
+    file = Printer.create_pdf(html, data[:company])
+    send_file(file)
+  end
 end
 
 
