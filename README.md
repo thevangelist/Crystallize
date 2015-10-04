@@ -5,26 +5,29 @@
 ### Docker
 Install docker: http://docs.docker.com/installation/
 
-### Docker Setup
-Go to project folder and build docker image:
+### Setup
+Go to project folder and run setup script:
 ```
-docker build -t crystallizer .
+script/setup
 ```
 
 ## Run 
 Run the app:
 ```
-sh run.sh
+script/run
 ```
 
 ## Deployment
 ###First deployment:
-
-Clone the repo to server and run `sh deploy.sh cold`. This will build the docker image and start the app.
+Clone the repo to server and run `script/deploy cold`. This will build the docker image and start the app.
 
 ###Later deployments:
 Updates that do not require changes to docker image:
+```
+script/deploy
+```
 
-Run `sh deploy.sh` on the server in application folder. This will reload the app.
-
-If updates to docker image are needed. Run `sh deploy.sh cold` 
+If updates to docker image are needed.
+```
+script/deploy cold
+```
