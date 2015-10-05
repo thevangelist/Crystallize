@@ -1,8 +1,8 @@
 require_relative "bundle/bundler/setup"
-require "sinatra/base"
-require "sinatra/config_file"
 require_relative "app/lib/printer.rb"
 require_relative "app/lib/validator.rb"
+require 'bundler'
+Bundler.require :default
 
 class App < Sinatra::Base
   set :root, File.dirname(__FILE__) + "/app"

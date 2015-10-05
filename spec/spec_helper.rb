@@ -1,4 +1,5 @@
 ENV["RACK_ENV"] = "test"
-require "minitest/autorun"
+require 'bundler'
+Bundler.require :default, :test
 
 require_relative "../app.rb"

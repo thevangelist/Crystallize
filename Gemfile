@@ -1,7 +1,13 @@
 source "http://rubygems.org"
-gem "sinatra"
-gem "sinatra-contrib"
-gem "pdfkit"
+
+# Web
+gem "sinatra", require: "sinatra/base"
+gem "sinatra-contrib", require: "sinatra/config_file"
 gem "thin"
 
-gem "minitest"
+# PDF generation
+gem "pdfkit"
+
+group :test do
+  gem "minitest", require: "minitest/autorun"
+end
