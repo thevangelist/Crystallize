@@ -3,3 +3,5 @@ gem "sinatra"
 gem "sinatra-contrib"
 gem "pdfkit"
 gem "thin"
+
+gem "minitest"
