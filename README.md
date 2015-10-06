@@ -17,6 +17,12 @@ Run the app:
 script/run
 ```
 
+## Tests
+Tests can be run with the following script:
+```
+scipt/test
+```
+
 ## Deployment
 ###First deployment:
 Clone the repo to server and run `script/deploy cold`. This will build the docker image and start the app.
