@@ -1,5 +1,5 @@
-module AppHelper
-  def self.valid_data
+module TestData
+  def self.valid_form
     { crystal:
       { company: "test",
         email: "e@e.e",

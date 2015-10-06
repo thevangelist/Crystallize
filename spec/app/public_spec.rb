@@ -1,5 +1,5 @@
 require_relative "../app_spec_helper.rb"
-require_relative "app_helpers.rb"
+require_relative "../test_data.rb"
 
 def app
   Public
@@ -15,7 +15,7 @@ describe "Public" do
 
   describe "POST /crystallize" do
     it "responds OK" do
-      post "/crystallize", AppHelper.valid_data
+      post "/crystallize", TestData.valid_form
       last_response.status.must_equal 200
     end
   end
