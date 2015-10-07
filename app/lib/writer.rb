@@ -14,8 +14,12 @@ module Writer
     Time.now.strftime('%Y%m%d-%H%M%S')
   end
 
+  def self.format_company(name)
+    name.gsub(" ", "_")
+  end
+
   def self.filename(company_name)
-    [timestamp, "_", company_name, ".pdf"].join
+    [timestamp, "_", format_company(company_name), ".pdf"].join
   end
 
 end
