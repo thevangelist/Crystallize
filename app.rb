@@ -4,6 +4,8 @@ require_relative "app/lib/validator.rb"
 require 'bundler'
 Bundler.require :default
 
+require_relative "spec/test_data.rb"
+
 class App < Sinatra::Base
   set :root, File.dirname(__FILE__) + "/app"
 end
@@ -23,7 +25,7 @@ class Public < App
     data = params[:crystal]
     if Validator.valid(data)
       html = erb(:pdf, locals: {crystal: data})
-      file = Printer.create_pdf(html, data[:company])
+      file = Printer.create_pdf(html, "files", data[:company])
       send_file(file)
     else
       redirect "/"
@@ -33,11 +35,9 @@ class Public < App
   # FIXME: This is for development purposes only.
   #        Must be removed when going to production.
   get "/test" do
-    data = { company: "komppania",
-             email: "meili@a.b"
-           }
+    data = TestData.valid_form[:crystal]
     html = erb(:pdf, locals: {crystal: data})
-    file = Printer.create_pdf(html, data[:company])
+    file = Printer.create_pdf(html, "files", data[:company])
     send_file(file)
   end
 end
