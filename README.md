@@ -20,7 +20,7 @@ script/run
 ## Tests
 Tests can be run with the following script:
 ```
-scipt/test
+script/test
 ```
 
 ## Deployment
