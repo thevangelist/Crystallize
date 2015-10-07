@@ -23,13 +23,10 @@ class Public < App
   # Create and send PDF from form data.
   post "/crystallize" do
     data = params[:crystal]
-    if Validator.valid(data)
-      html = erb(:pdf, locals: {crystal: data})
-      file = Printer.create_pdf(html, "files", data[:company])
-      send_file(file)
-    else
-      redirect "/"
-    end
+    return redirect "/" unless Validator.valid(data)
+    html = erb(:pdf, locals: {crystal: data})
+    file = Printer.create_pdf(html, "files", data[:company])
+    send_file(file)
   end
 
   # FIXME: This is for development purposes only.
