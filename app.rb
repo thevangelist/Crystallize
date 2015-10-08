@@ -26,7 +26,7 @@ class Public < App
     return redirect "/" unless Validator.valid(data)
     html = erb(:pdf, locals: {crystal: data})
     pdf  = Printer.create_pdf(html)
-    file = Writer.save_pdf(pdf, "files")
+    file = Writer.save_pdf(pdf, settings.path)
     send_file(file)
   end
 
