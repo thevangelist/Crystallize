@@ -6,4 +6,6 @@ cd "$(dirname "$0")/.."
 
 docker build -t crystallizer .
 
+script/update
+
 echo "==> Setup done"
