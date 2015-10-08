@@ -11,7 +11,7 @@ describe "Validator" do
     end
 
     it "passes with correct data" do
-    data = TestData.valid_form[:crystal]
+      data = TestData.valid_form[:crystal]
       Validator.valid(data).must_equal true
     end
   end
