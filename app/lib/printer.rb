@@ -4,9 +4,8 @@ require_relative "writer.rb"
 module Printer
 
   # Generete PDF from HTML and save it using company name.
-  def self.create_pdf(html, path, company_name)
-    pdf = generate_pdf(html)
-    Writer.save_pdf(pdf, path, company_name)
+  def self.create_pdf(html)
+    generate_pdf(html)
   end
 
   private

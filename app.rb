@@ -25,7 +25,8 @@ class Public < App
     data = params[:crystal]
     return redirect "/" unless Validator.valid(data)
     html = erb(:pdf, locals: {crystal: data})
-    file = Printer.create_pdf(html, "files", data[:company])
+    pdf  = Printer.create_pdf(html)
+    file = Writer.save_pdf(pdf, "files")
     send_file(file)
   end
 
@@ -34,8 +35,8 @@ class Public < App
   get "/test" do
     data = TestData.valid_form[:crystal]
     html = erb(:pdf, locals: {crystal: data})
-    file = Printer.create_pdf(html, "files", data[:company])
-    send_file(file)
+    pdf  = Printer.create_pdf(html)
+    send_file(pdf.to_pdf)
   end
 end
 
