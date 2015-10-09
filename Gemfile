@@ -9,6 +9,7 @@ gem "hash_validator"
 
 # PDF generation
 gem "pdfkit"
+gem 'wkhtmltopdf-binary'
 
 group :test do
   gem "minitest", require: "minitest/autorun"
