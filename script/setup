@@ -1,7 +1,5 @@
 #!/bin/sh
 
-set -e
-
 cd "$(dirname "$0")/.."
 
 stack_url="https://github.com/commercialhaskell/stack"
