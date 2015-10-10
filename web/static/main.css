@@ -132,7 +132,6 @@ footer {
 }
 @media(max-width: 700px) {
     #wrapper {
-        width: 92%;
-        box-sizing: content-box;
+        width: 100%;
     }
 }
