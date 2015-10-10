@@ -20,7 +20,7 @@ body {
     background-size: cover;
 }
 #wrapper {
-    width: 700px;
+    width: 800px;
     margin: 0 auto;
     background: rgba(255, 255, 255, 0.75);
     padding: 1.5em 1.5em 3em 1.5em;
@@ -130,7 +130,7 @@ footer {
     color: #000;
     box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.2);
 }
-@media(max-width: 700px) {
+@media(max-width: 800px) {
     #wrapper {
         width: 100%;
     }
