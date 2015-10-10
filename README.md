@@ -1,4 +1,4 @@
-# Crystallize it
+# Formalize it
 
 A form which 1) turns answers into a neat PDF & 2) Saves them for later viewing for admins. 
 ### User scenario
@@ -35,16 +35,5 @@ script/test
 ```
 
 ## Deployment
-###First deployment:
-Clone the repo to server and run `script/deploy cold`. This will build the docker image and start the app.
+TODO
 
-###Later deployments:
-Updates that do not require changes to docker image:
-```
-script/deploy
-```
-
-If updates to docker image are needed.
-```
-script/deploy cold
-```

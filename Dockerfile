@@ -1,4 +1,4 @@
-FROM google/ruby
+FROM fpco/stack-build
 MAINTAINER matson
 
 # install and setup PDF generator.
