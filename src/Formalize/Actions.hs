@@ -10,31 +10,23 @@ import Formalize.Html
 import Formalize.Types
 import Formalize.Pdf
 import Formalize.Util
+import Formalize.Validate
 import Web.Spock
 
--- TODO: Find better way for parsing params.
---       Also handle validation failures.
+-- TODO: Extract logic out of Action.
 -- Parse params and return PDF.
 submit :: FormalizeAction ctx a
 submit = do
-    p0  <- param' "crystal[company]"
-    p1  <- param' "crystal[email]"
-    p2  <- param' "crystal[category_cards_green]"
-    p3  <- param' "crystal[category_cards_red]"
-    p4  <- param' "crystal[topaasia_green]"
-    p5  <- param' "crystal[topaasia_red]"
-    p6  <- param' "crystal[improvement_green]"
-    p7  <- param' "crystal[improvement_red]"
-    p8  <- param' "crystal[lead_green]"
-    p9  <- param' "crystal[lead_red]"
-    p10 <- param' "crystal[last_used]"
-    p11 <- param' "crystal[rating]"
-    let formData = FormData p0 p1 p2 p3 p4 p5 p6 p7 p8 p9 p10 p11
-    pdf <- liftIO (createPDF formData)
-    state <- getState
-    liftIO (savePDF (sPath state) pdf)
-    setHeader "Content-Type" "application/pdf"
-    bytes pdf
+    ps <- params
+    case formFromParams ps of
+     -- TODO: Show error message to user on redirect.
+      Nothing         -> redirect "/"
+      Just (formData) -> do
+          pdf <- liftIO (createPDF formData)
+          state <- getState
+          liftIO (savePDF (sPath state) pdf)
+          setHeader "Content-Type" "application/pdf"
+          bytes pdf
 
 -- Render form.
 home :: FormalizeAction ctx a
