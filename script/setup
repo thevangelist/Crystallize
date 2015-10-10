@@ -4,8 +4,6 @@ set -e
 
 cd "$(dirname "$0")/.."
 
-docker build -t crystallizer .
-
-script/update
+docker build -t formalize .
 
 echo "==> Setup done"

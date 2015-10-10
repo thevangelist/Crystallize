@@ -1,8 +1,8 @@
 .idea
 .DS_Store
-config.yml
+
+# generated PDF files.
 files/*.pdf
 
-# docker ruby stuff
-.bundle
-bundle
+# stack tool
+.stack-work
