@@ -1,0 +1,41 @@
+#!/bin/sh
+
+#set -e
+
+cd "$(dirname "$0")/.."
+
+local_bin=".stack-work/dist/x86_64-linux/Cabal-1.22.4.0/build/formalize/formalize"
+app_name="formalize"
+folders="web"
+package_name="package.tar.gz"
+remote="formalize"
+deploy_path="/var/www/apps/${app_name}/app"
+
+echo "==> Testing SSH connection..."
+ssh $remote "uname -a"
+echo "==> Connection OK"
+
+echo "==> Creating deploy package..."
+script/build
+cp $local_bin $app_name
+tar -zcvf $package_name $folders $app_name
+echo "==> Package created"
+
+# TODO: Use upstart script instead of screen.
+#       There was a problem with upstart so this works as an temporary solution.
+echo "==> Deploying to server..."
+scp $package_name $remote:$deploy_path
+CMD="\
+cd ${deploy_path} &&\
+screen -r ${app_name} -X quit &&\
+rm -rf ${folders} ${app_name} &&\
+tar -zxvf ${package_name} &&\
+screen -S ${app_name} -d -m -L ./${app_name} &&\
+rm ${package_name}"
+ssh $remote $CMD
+echo "==> Deployed"
+
+echo "==> Cleaning up..."
+rm $app_name
+rm $package_name
+echo "==> All done!"
