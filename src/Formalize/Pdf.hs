@@ -16,6 +16,12 @@ createPDF fd = do
     htmlText <- pdfHtml fd
     html2PDF $ C.cs htmlText
 
+-- Options for wkhtmltopdf tool.
+pdfOptions :: [String]
+pdfOptions = [ "--quiet"
+             , "--user-style-sheet", "web/static/pdf.css"
+             ]
+
 -- TODO: dont use string?
 -- Use wkhtmltopdf tool for converting HTML to PDF.
 html2PDF :: String -> IO PDF
@@ -27,6 +33,7 @@ html2PDF html = withSystemTempFile "output.pdf" (html2PDF' html)
       withSystemTempFile "input.html" $ \tempHtmlFile tempHtmlHandle -> do
         IO.hPutStrLn tempHtmlHandle html'
         hClose tempHtmlHandle
-        (_,_,_, pHandle) <- createProcess (proc "wkhtmltopdf" ["--quiet", tempHtmlFile, tempPDFFile])
+        (_,_,_, pHandle) <- createProcess (proc "wkhtmltopdf" $
+            pdfOptions ++ [tempHtmlFile, tempPDFFile])
         _ <- waitForProcess pHandle
         BS.readFile tempPDFFile
