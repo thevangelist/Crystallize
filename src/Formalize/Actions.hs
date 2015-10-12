@@ -5,7 +5,7 @@ module Formalize.Actions
     ) where
 
 import Control.Monad.IO.Class (liftIO)
-import Data.String.Conversions as C
+import Data.Text.Lazy as LT
 import Formalize.Html
 import Formalize.Types
 import Formalize.Pdf
@@ -13,23 +13,23 @@ import Formalize.Util
 import Formalize.Validate
 import Web.Spock
 
--- TODO: Extract logic out of Action.
+-- Handle successful submit.
+submitSuccess :: FormData -> FormalizeAction ctx a
+submitSuccess formData = do
+    pdf <- liftIO $ createPDF formData
+    path <- fmap sPath getState
+    liftIO $ savePDF path pdf
+    setHeader "Content-Type" "application/pdf"
+    bytes pdf
+
+-- Handle failed submit.
+submitFailure :: FormalizeAction ctx a
+submitFailure = redirect "/"
+
 -- Parse params and return PDF.
 submit :: FormalizeAction ctx a
-submit = do
-    ps <- params
-    case formFromParams ps of
-     -- TODO: Show error message to user on redirect.
-      Nothing         -> redirect "/"
-      Just (formData) -> do
-          pdf <- liftIO (createPDF formData)
-          state <- getState
-          liftIO (savePDF (sPath state) pdf)
-          setHeader "Content-Type" "application/pdf"
-          bytes pdf
+submit = maybe submitFailure submitSuccess =<< fmap formFromParams params
 
 -- Render form.
 home :: FormalizeAction ctx a
-home = do
-    x <- liftIO formHtml
-    html $ C.cs x
+home = html =<< fmap LT.toStrict (liftIO formHtml)
