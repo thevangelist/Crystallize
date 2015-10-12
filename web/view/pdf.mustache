@@ -4,49 +4,28 @@
     <meta charset="UTF-8">
     <title>Kiteyttäjä by Gälliwashere.com</title>
 </head>
-<body style="font-size: 12px; line-height: 1em; padding: 0; margin: 0: border: 0; font-family: sans-serif; text-align: center; color: #354052;">
-    <div>
-        <h1 style="text-transform: uppercase; font-size: 30px; padding: 1.5em 0; font-weight: 300; border-bottom: 9px double #354052;">Kiteyttäjä</h1>
+<body>
+    <h1>Kiteyttäjä</h1>
+    <p>Yrityksen nimi: <span>{{_company}}</span></p>
+    <p>Sähköposti: <span>{{_email}}</span></p>
 
-        <h4 for="company">Yrityksen nimi</h4>
-        <span>{{_company}}</span>
+    <p>Vihreät kortit: <span>{{_category_cards_green}}</span></p>
+    <p>Punaiset kortit: <span>{{_category_cards_red}}</span></p>
 
-        <h4 for="email">Sähköposti</h4>
-        <span>{{_email}}</span>
-        <hr style="border: 0; border-top: 3px double #354052; margin: 1em;"/>
+    <h2>Vihreä topaasia</h2>
+    <p>Topaasia: <span>{{_topaasia_green}}</span></p>
+    <p>Miten kehitämme seuraavaan pelisessioon mennessä: <span>{{_improvement_green}}</span></p>
+    <p>Vetovastuu: <span>{{_lead_green}}</span></p>
 
-        <h4 for="category-cards-green">Vihreät kortit</h4>
-        <span>{{_category_cards_green}}</span>
+    <h2>Punainen topaasia</h2>
+    <p>Topaasia: <span>{{_topaasia_red}}</span></p>
+    <p>Miten kehitämme seuraavaan pelisessioon mennessä: <span>{{_improvement_red}}</span></p>
+    <p>Vetovastuu: <span>{{_lead_red}}</span></p>
 
-        <h4 for="category-cards-red">Punaiset kortit</h4>
-        <span>{{_category_cards_red}}</span>
-        <hr style="border: 0; border-top: 3px double #354052; margin: 1em;"/>
+    <h2>Sekalaista</h2>
+    <p>Viime pelisessiossa päätetyt kokeilut (ei täytetä ensimmäisessä pelisessiossa): <span>{{_last_used}}</span></p>
+    <p>Miten hyödyllinen pelisessio oli käytettyyn aikaan nähden (1-5, 1 = Hyödytön, 5 = erittäin hyödyllinen): <span>{{_rating}}</span></p>
 
-        <h3>Vihreä topaasia</h3>
-        <h4 for="topaasia-green">Topaasia</h4>
-        <span>{{_topaasia_green}}</span>
-        <h4 for="improvement-green">Miten kehitämme seuraavaan pelisessioon mennessä</h4>
-        <span>{{_improvement_green}}</span>
-        <h4 for="lead-green">Vetovastuu</h4>
-        <span>{{_lead_green}}</span>
-        <hr style="border: 0; border-top: 3px double #354052; margin: 1em;"/>
-
-        <h3>Punainen topaasia</h3>
-        <h4 for="topaasia-red">Topaasia</h4>
-        <span>{{_topaasia_red}}</span>
-        <h4 for="improvement-red">Miten kehitämme seuraavaan pelisessioon mennessä</h4>
-        <span>{{_improvement_red}}</span>
-        <h4 for="lead-red">Vetovastuu</h4>
-        <span>{{_lead_red}}</span>
-        <hr style="border: 0; border-top: 3px double #354052; margin: 1em;"/>
-
-        <h3>Viime pelisessiossa päätetyt kokeilut (ei täytetä ensimmäisessä pelisessiossa)</h3>
-        <span>{{_last_used}}</span>
-
-        <h3>Miten hyödyllinen pelisessio oli käytettyyn aikaan nähden (1-5)</h3>
-        <span>{{_rating}}</span>
-    </div>
-    <hr style="border: 0; border-top: 3px double #354052; margin: 1em;"/>
-    <footer style="padding: 1em 0; color: #000;">We Make Organizational Development Games! - <a style="color: #354052; font-weight: bold;" href="http://www.galliwashere.com" title="Gälliwashere.com">Gälliwashere.com</a> 2015 &copy;</footer>
+    <footer>We Make Organizational Development Games! - <a href="http://www.galliwashere.com" title="Gälliwashere.com">Gälliwashere.com</a> 2015 &copy;</footer>
 </body>
 </html>
