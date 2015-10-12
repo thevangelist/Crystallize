@@ -35,5 +35,10 @@ script/test
 ```
 
 ## Deployment
-TODO
+Add required info to your `.ssh/config` and make sure you are in
+`authorized_keys` file on the server.
 
+To deploy just run:
+```
+script/deploy
+```
