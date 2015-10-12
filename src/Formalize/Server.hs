@@ -24,6 +24,7 @@ appRoutes :: FormalizeApp ()
 appRoutes = do
     get  root      $ Action.home
     post "/submit" $ Action.submit
+    hookAny GET    $ Action.notFound
 
 -- Join middlewares and routes to spock app.
 formalizerApp :: FormalizeApp ()
