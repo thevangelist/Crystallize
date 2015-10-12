@@ -27,10 +27,10 @@ echo "==> Deploying to server..."
 scp $package_name $remote:$deploy_path
 CMD="\
 cd ${deploy_path} &&\
-screen -r ${app_name} -X quit &&\
+supervisorctl stop ${app_name} &&\
 rm -rf ${folders} ${app_name} &&\
 tar -zxvf ${package_name} &&\
-screen -S ${app_name} -d -m -L ./${app_name} &&\
+supervisorctl start ${app_name} &&\
 rm ${package_name}"
 ssh $remote $CMD
 echo "==> Deployed"
