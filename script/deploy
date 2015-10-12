@@ -1,10 +1,10 @@
 #!/bin/sh
 
-#set -e
+set -e
 
 cd "$(dirname "$0")/.."
 
-local_bin=".stack-work/dist/x86_64-linux/Cabal-1.22.4.0/build/formalize/formalize"
+local_bin=".stack-work/dist/x86_64-linux/*/build/formalize/formalize"
 app_name="formalize"
 folders="web"
 package_name="package.tar.gz"
@@ -17,12 +17,16 @@ echo "==> Connection OK"
 
 echo "==> Creating deploy package..."
 script/build
+if [ -e $local_bin ]; then
+  echo "==> Architecture OK"
+else
+  echo "==> Incorrect architecture. Can't deploy."
+  exit 1
+fi
 cp $local_bin $app_name
 tar -zcvf $package_name $folders $app_name
 echo "==> Package created"
 
-# TODO: Use upstart script instead of screen.
-#       There was a problem with upstart so this works as an temporary solution.
 echo "==> Deploying to server..."
 scp $package_name $remote:$deploy_path
 CMD="\
