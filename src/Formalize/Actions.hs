@@ -28,8 +28,8 @@ submitFailure = redirect "/"
 
 -- Parse params and return PDF.
 submit :: FormalizeAction ctx a
-submit = maybe submitFailure submitSuccess =<< fmap formFromParams params
+submit = fmap formFromParams params >>= maybe submitFailure submitSuccess
 
 -- Render form.
 home :: FormalizeAction ctx a
-home = html =<< fmap LT.toStrict (liftIO formHtml)
+home = fmap LT.toStrict (liftIO formHtml) >>= html
