@@ -18,8 +18,9 @@ createPDF fd = do
 
 -- Options for wkhtmltopdf tool.
 pdfOptions :: [String]
-pdfOptions = ["--quiet",
-              "--user-style-sheet", "web/static/pdf.css"]
+pdfOptions = [ "--quiet"
+             , "--user-style-sheet", "web/static/pdf.css"
+             ]
 
 -- TODO: dont use string?
 -- Use wkhtmltopdf tool for converting HTML to PDF.
