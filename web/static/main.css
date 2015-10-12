@@ -108,8 +108,16 @@ button {
     cursor: pointer;
 }
 button:hover {
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    -o-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
     background: #044859;
     box-shadow: 0 0 4px #AAA;
+    text-decoration: none;
+}
+button:hover:after {
+    content: " & luo PDF >>";
 }
 button:active {
     background: #0892b6;
