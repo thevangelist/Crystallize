@@ -2,14 +2,14 @@ module Formalize.Pdf
     ( createPDF
     ) where
 
-import Formalize.Html
-import Formalize.Types
-import System.Process
-import System.IO.Temp
-import System.IO (hClose, Handle)
 import qualified Data.ByteString   as BS
 import qualified Data.Text.Lazy    as LT
 import qualified Data.Text.Lazy.IO as IO
+import           Formalize.Html
+import           Formalize.Types
+import           System.IO         (Handle, hClose)
+import           System.IO.Temp
+import           System.Process
 
 -- Create PDF file from form data.
 createPDF :: FormData -> IO PDF

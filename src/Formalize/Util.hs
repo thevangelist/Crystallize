@@ -2,11 +2,11 @@ module Formalize.Util
     ( savePDF
     ) where
 
-import Data.ByteString (ByteString)
-import Data.Time.Clock
-import Data.Time.Format
-import System.FilePath
-import qualified Data.ByteString as BS
+import           Data.ByteString  (ByteString)
+import qualified Data.ByteString  as BS
+import           Data.Time.Clock
+import           Data.Time.Format
+import           System.FilePath
 
 -- Create timestamp for filename.
 timestamp :: IO FilePath

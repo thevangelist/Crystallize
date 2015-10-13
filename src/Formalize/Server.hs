@@ -3,11 +3,11 @@ module Formalize.Server
     ( runServer
     ) where
 
-import Formalize.Actions as Action
-import Formalize.Types
-import Network.Wai.Middleware.Static
-import Network.Wai.Middleware.RequestLogger
-import Web.Spock.Safe
+import           Formalize.Actions                    as Action
+import           Formalize.Types
+import           Network.Wai.Middleware.RequestLogger
+import           Network.Wai.Middleware.Static
+import           Web.Spock.Safe
 
 -- Path for static files like .js and .css.
 staticPath :: String
@@ -22,9 +22,9 @@ appMiddleware = do
 -- Routes for application.
 appRoutes :: FormalizeApp ()
 appRoutes = do
-    get  root      $ Action.home
-    post "/submit" $ Action.submit
-    hookAny GET    $ Action.notFound
+    get  root      Action.home
+    post "/submit" Action.submit
+    hookAny GET    Action.notFound
 
 -- Join middlewares and routes to spock app.
 formalizerApp :: FormalizeApp ()
@@ -36,4 +36,4 @@ runServer conf =
     let port = cPort conf
         state = AppState $ cPath conf
         spockCfg = defaultSpockCfg Nothing PCNoDatabase state
-    in runSpock port $ spock spockCfg $ formalizerApp
+    in runSpock port $ spock spockCfg formalizerApp

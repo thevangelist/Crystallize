@@ -4,12 +4,12 @@ module Formalize.Html
     , pdfHtml
     ) where
 
-import Control.Monad.IO.Class (MonadIO)
-import Data.Text.Lazy as LT (Text)
-import Formalize.Types
-import System.FilePath
-import Text.Hastache
-import Text.Hastache.Context
+import           Control.Monad.IO.Class (MonadIO)
+import           Data.Text.Lazy         as LT (Text)
+import           Formalize.Types
+import           System.FilePath
+import           Text.Hastache
+import           Text.Hastache.Context
 
 -- Location of view files.
 viewFolder :: FilePath

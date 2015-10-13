@@ -3,8 +3,8 @@ module Formalize.Config
     ( readConfig
     ) where
 
-import Formalize.Types
 import qualified Data.Configurator as C
+import           Formalize.Types
 
 -- Read config file.
 readConfig :: FilePath -> IO AppConfig

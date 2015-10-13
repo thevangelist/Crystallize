@@ -3,12 +3,12 @@ module Formalize.Validate
     ( formFromParams
     ) where
 
-import Data.Text (Text)
-import Data.Map  (Map)
-import Data.Maybe
-import Formalize.Types
-import qualified Data.Text as T
-import qualified Data.Map  as M
+import           Data.Map        (Map)
+import qualified Data.Map        as M
+import           Data.Maybe
+import           Data.Text       (Text)
+import qualified Data.Text       as T
+import           Formalize.Types
 
 type Params = Map Text Text
 

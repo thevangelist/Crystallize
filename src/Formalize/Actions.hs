@@ -5,17 +5,17 @@ module Formalize.Actions
     , notFound
     ) where
 
-import Control.Monad.IO.Class (liftIO, MonadIO)
-import Data.Text (Text)
-import Data.Text.Lazy as LT (toStrict)
-import Data.Text.IO as IO
-import Formalize.Html
-import Formalize.Types
-import Formalize.Pdf
-import Formalize.Util
-import Formalize.Validate
-import Network.HTTP.Types.Status (status404)
-import Web.Spock
+import           Control.Monad.IO.Class    (MonadIO, liftIO)
+import           Data.Text                 (Text)
+import           Data.Text.IO              as IO
+import           Data.Text.Lazy            as LT (toStrict)
+import           Formalize.Html
+import           Formalize.Pdf
+import           Formalize.Types
+import           Formalize.Util
+import           Formalize.Validate
+import           Network.HTTP.Types.Status (status404)
+import           Web.Spock
 
 emptyForm :: FormInput
 emptyForm = FormInput "" "" "" "" "" "" "" "" "" "" "" ""

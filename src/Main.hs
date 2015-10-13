@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Main where
-import Formalize.Server
-import Formalize.Config
+import           Formalize.Config
+import           Formalize.Server
 
 main :: IO ()
 main = readConfig "app.conf" >>= runServer
