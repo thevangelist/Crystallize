@@ -5,10 +5,10 @@ module Formalize.Actions
     , notFound
     ) where
 
-import Control.Monad.IO.Class (liftIO)
-import Data.Text.IO as IO
+import Control.Monad.IO.Class (liftIO, MonadIO)
 import Data.Text (Text)
-import qualified Data.Text.Lazy as LT
+import Data.Text.Lazy as LT (toStrict)
+import Data.Text.IO as IO
 import Formalize.Html
 import Formalize.Types
 import Formalize.Pdf
@@ -17,9 +17,16 @@ import Formalize.Validate
 import Network.HTTP.Types.Status (status404)
 import Web.Spock
 
+emptyForm :: FormInput
+emptyForm = FormInput "" "" "" "" "" "" "" "" "" "" "" ""
+
+emptyFlash :: FlashMessage
+emptyFlash = FlashMessage ""
+
 -- Handle successful submit.
-submitSuccess :: FormData -> FormalizeAction ctx a
-submitSuccess formData = do
+submitSuccess :: FormInput -> FormalizeAction ctx a
+submitSuccess formInput = do
+    let formData = FormData formInput emptyFlash
     pdf <- liftIO $ createPDF formData
     path <- fmap sPath getState
     liftIO $ savePDF path pdf
@@ -27,16 +34,20 @@ submitSuccess formData = do
     bytes pdf
 
 -- Handle failed submit.
-submitFailure :: FormalizeAction ctx a
-submitFailure = redirect "/"
+submitFailure :: Text -> FormalizeAction ctx a
+submitFailure errorTxt = renderHome emptyForm (FlashMessage errorTxt) >>= html
 
 -- Parse params and return PDF.
 submit :: FormalizeAction ctx a
-submit = fmap formFromParams params >>= maybe submitFailure submitSuccess
+submit = fmap formFromParams params >>= either submitFailure submitSuccess
 
 -- Render form.
+renderHome :: MonadIO m => FormInput -> FlashMessage -> m Text
+renderHome formInput msg = fmap LT.toStrict (liftIO $ formHtml formData)
+    where formData = FormData formInput msg
+
 home :: FormalizeAction ctx a
-home = fmap LT.toStrict (liftIO formHtml) >>= html
+home = renderHome emptyForm emptyFlash >>= html
 
 -- Render custom 404 page.
 notFound :: [Text] -> FormalizeAction ctx a

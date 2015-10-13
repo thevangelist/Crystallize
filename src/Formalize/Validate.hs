@@ -15,9 +15,9 @@ type Params = Map Text Text
 -- Filter only wanted form params.
 filterForm :: Text -> [(Text,Text)] -> Params
 filterForm prefix =
-    let f     = T.isPrefixOf (T.append prefix "[") . fst
-        parse = T.takeWhile (/= ']') . T.drop 1 . T.dropWhile (/= '[')
-        g     = \ (k,v) -> (parse k, v)
+    let f       = T.isPrefixOf (T.append prefix "[") . fst
+        parse   = T.takeWhile (/= ']') . T.drop 1 . T.dropWhile (/= '[')
+        g (k,v) = (parse k, v)
     in M.fromList . map g . filter f
 
 -- Return list of maybe values from params.
@@ -38,25 +38,26 @@ mValues params =
     ]
 
 -- Create form from valid params map.
-createForm :: Params -> FormData
+createForm :: Params -> FormInput
 createForm ps =
-    FormData (ps M.! "company")
-             (ps M.! "email")
-             (ps M.! "category_cards_green")
-             (ps M.! "category_cards_red")
-             (ps M.! "topaasia_green")
-             (ps M.! "topaasia_red")
-             (ps M.! "improvement_green")
-             (ps M.! "improvement_red")
-             (ps M.! "lead_green")
-             (ps M.! "lead_red")
-             (ps M.! "last_used")
-             (ps M.! "rating")
+    FormInput (ps M.! "company")
+              (ps M.! "email")
+              (ps M.! "category_cards_green")
+              (ps M.! "category_cards_red")
+              (ps M.! "topaasia_green")
+              (ps M.! "topaasia_red")
+              (ps M.! "improvement_green")
+              (ps M.! "improvement_red")
+              (ps M.! "lead_green")
+              (ps M.! "lead_red")
+              (ps M.! "last_used")
+              (ps M.! "rating")
 
 -- Try to create form from params list.
-formFromParams :: [(Text,Text)] -> Maybe FormData
+formFromParams :: [(Text,Text)] -> Either Text FormInput
 formFromParams ps =
     let params     = filterForm "crystal" ps
-        mValueList = mValues $ params
+        mValueList = mValues params
         valid      = (==) 12 . length $ catMaybes mValueList
-    in if valid then Just (createForm params) else Nothing
+        errorMsg   = "Syötit virheellistä tietoa, ole hyvä ja korjaa lomake."
+        in if valid then Right (createForm params) else Left errorMsg

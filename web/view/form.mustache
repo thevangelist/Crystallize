@@ -8,6 +8,9 @@
     <link rel="stylesheet" type="text/css" href="/main.css" />
 </head>
 <body>
+    {{#fdMessage.fmContent}}
+    <p id="errors">{{fdMessage.fmContent}}<a title="Sulje ilmoitus" href="#">&#9587;</a></p>
+    {{/fdMessage.fmContent}}
     <div id="wrapper">
         <h1>Kiteyttäjä</h1>
         <form id="crystallized" method="post" action="/submit">

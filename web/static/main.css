@@ -23,6 +23,17 @@ body {
     background: url(background.jpg);
     background-size: cover;
 }
+#errors {
+    background: #FFF;
+    width: 100%;
+    line-height: 3em;
+    text-align: center;
+    margin: 0;
+}
+#errors a {
+    float: right;
+    padding: 0 1em;
+}
 #wrapper {
     width: 800px;
     margin: 0 auto;
@@ -41,9 +52,11 @@ label.error {
     color: #029793;
 }
 a {
+    text-decoration: none;
     color: #0892b6;
 }
 a:hover {
+    text-decoration: underline;
     color: #044859;
 }
 button:focus,
