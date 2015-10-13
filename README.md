@@ -35,6 +35,8 @@ script/test
 ```
 
 ## Deployment
+The executable must be built on `x86_64-linux`.
+
 Add required info to your `.ssh/config` and make sure you are in
 `authorized_keys` file on the server.
 
