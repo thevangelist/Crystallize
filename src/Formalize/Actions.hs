@@ -24,12 +24,13 @@ submitSuccess formData = do
 
 -- Handle failed submit.
 submitFailure :: FormalizeAction ctx a
-submitFailure = redirect "/"
+submitFailure = home $ Just $ FlashMessage txt
+    where txt = "Syötit virheellistä tietoa, ole hyvä ja korjaa lomake."
 
 -- Parse params and return PDF.
 submit :: FormalizeAction ctx a
 submit = fmap formFromParams params >>= maybe submitFailure submitSuccess
 
 -- Render form.
-home :: FormalizeAction ctx a
-home = fmap LT.toStrict (liftIO formHtml) >>= html
+home :: Maybe FlashMessage -> FormalizeAction ctx a
+home msg = fmap LT.toStrict (liftIO $ formHtml msg) >>= html

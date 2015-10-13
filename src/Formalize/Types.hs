@@ -34,3 +34,7 @@ data FormData = FormData
     , _last_used            :: Text
     , _rating               :: Text
     } deriving (Data, Typeable)
+
+data FlashMessage = FlashMessage
+    { fmContent :: Text
+    } deriving (Data, Typeable)
