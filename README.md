@@ -12,9 +12,9 @@ A form which 1) turns answers into a neat PDF & 2) Saves them for later viewing 
 * Admin downloads PDF's
 
 ## Installation
-
-### Docker
-Install docker: http://docs.docker.com/installation/
+Install following tools:
+ * stack
+ * wkhtmltopdf
 
 ### Setup
 Go to project folder and run setup script:

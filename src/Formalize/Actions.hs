@@ -6,9 +6,9 @@ module Formalize.Actions
     ) where
 
 import Control.Monad.IO.Class (liftIO)
-import Data.String.Conversions as C
 import Data.Text.IO as IO
 import Data.Text (Text)
+import qualified Data.Text.Lazy as LT
 import Formalize.Html
 import Formalize.Types
 import Formalize.Pdf
@@ -17,29 +17,29 @@ import Formalize.Validate
 import Network.HTTP.Types.Status (status404)
 import Web.Spock
 
--- TODO: Extract logic out of Action.
+-- Handle successful submit.
+submitSuccess :: FormData -> FormalizeAction ctx a
+submitSuccess formData = do
+    pdf <- liftIO $ createPDF formData
+    path <- fmap sPath getState
+    liftIO $ savePDF path pdf
+    setHeader "Content-Type" "application/pdf"
+    bytes pdf
+
+-- Handle failed submit.
+submitFailure :: FormalizeAction ctx a
+submitFailure = redirect "/"
+
 -- Parse params and return PDF.
 submit :: FormalizeAction ctx a
-submit = do
-    ps <- params
-    case formFromParams ps of
-     -- TODO: Show error message to user on redirect.
-      Nothing         -> redirect "/"
-      Just (formData) -> do
-          pdf <- liftIO (createPDF formData)
-          state <- getState
-          liftIO (savePDF (sPath state) pdf)
-          setHeader "Content-Type" "application/pdf"
-          bytes pdf
+submit = fmap formFromParams params >>= maybe submitFailure submitSuccess
 
 -- Render form.
 home :: FormalizeAction ctx a
-home = do
-    x <- liftIO formHtml
-    html $ C.cs x
+home = fmap LT.toStrict (liftIO formHtml) >>= html
 
 -- Render custom 404 page.
 notFound :: [Text] -> FormalizeAction ctx a
 notFound _ = do
     setStatus status404
-    html =<< liftIO (IO.readFile "web/static/404.html")
+    liftIO (IO.readFile "web/static/404.html") >>= html

@@ -40,5 +40,4 @@ executable formalize
     configurator          >= 0.3,
     containers            >= 0.5,
     filepath              >= 1.4,
-    time                  >= 1.5,
-    string-conversions    >= 0.4
+    time                  >= 1.5
