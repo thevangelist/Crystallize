@@ -10,6 +10,10 @@
         display: table-cell;
     }
 }
+::selection {
+    background: #FFF;
+    color: #0892b6;
+}
 html,
 body {
     margin: 0;
