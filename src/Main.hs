@@ -4,4 +4,4 @@ import           Formalize.Config
 import           Formalize.Server
 
 main :: IO ()
-main = readConfig "app.conf" >>= runServer
+main = readConfig "app.cfg" >>= runServer
