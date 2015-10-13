@@ -29,6 +29,7 @@ executable formalize
     Spock                 >= 0.9,
     wai-extra             >= 3.0,
     wai-middleware-static >= 0.7,
+    http-types            >= 0.8,
     hastache              >= 0.6,
     text                  >= 1.2,
     bytestring            >= 0.10,

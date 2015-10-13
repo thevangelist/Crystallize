@@ -2,16 +2,19 @@
 module Formalize.Actions
     ( home
     , submit
+    , notFound
     ) where
 
 import Control.Monad.IO.Class (liftIO, MonadIO)
 import Data.Text (Text)
 import Data.Text.Lazy as LT (toStrict)
+import Data.Text.IO as IO
 import Formalize.Html
 import Formalize.Types
 import Formalize.Pdf
 import Formalize.Util
 import Formalize.Validate
+import Network.HTTP.Types.Status (status404)
 import Web.Spock
 
 emptyForm :: FormInput
@@ -45,3 +48,9 @@ renderHome formInput msg = fmap LT.toStrict (liftIO $ formHtml formData)
 
 home :: FormalizeAction ctx a
 home = renderHome emptyForm emptyFlash >>= html
+
+-- Render custom 404 page.
+notFound :: [Text] -> FormalizeAction ctx a
+notFound _ = do
+    setStatus status404
+    liftIO (IO.readFile "web/static/404.html") >>= html
