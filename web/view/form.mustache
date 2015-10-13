@@ -8,6 +8,10 @@
     <link rel="stylesheet" type="text/css" href="/main.css" />
 </head>
 <body>
+    <!-- TOOD: ADD error from backend -->
+    {{#erroneous_input}}
+        <p id="errors">Syötit virheellistä tietoa, ole hyvä ja korjaa lomake.<a title="Sulje ilmoitus" href="#">&#9587;</a></p>
+    {{/erroneous_input}}
     <div id="wrapper">
         <h1>Kiteyttäjä</h1>
         <form id="crystallized" method="post" action="/submit">
