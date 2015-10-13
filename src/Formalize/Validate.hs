@@ -54,9 +54,10 @@ createForm ps =
               (ps M.! "rating")
 
 -- Try to create form from params list.
-formFromParams :: [(Text,Text)] -> Maybe FormInput
+formFromParams :: [(Text,Text)] -> Either Text FormInput
 formFromParams ps =
     let params     = filterForm "crystal" ps
         mValueList = mValues params
         valid      = (==) 12 . length $ catMaybes mValueList
-    in if valid then Just (createForm params) else Nothing
+        errorMsg   = "Syötit virheellistä tietoa, ole hyvä ja korjaa lomake."
+        in if valid then Right (createForm params) else Left errorMsg

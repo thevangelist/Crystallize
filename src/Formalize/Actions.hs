@@ -31,13 +31,12 @@ submitSuccess formInput = do
     bytes pdf
 
 -- Handle failed submit.
-submitFailure :: FormalizeAction ctx a
-submitFailure = renderHome emptyForm msg >>= html
-    where msg = FlashMessage "Syötit virheellistä tietoa, ole hyvä ja korjaa lomake."
+submitFailure :: Text -> FormalizeAction ctx a
+submitFailure errorTxt = renderHome emptyForm (FlashMessage errorTxt) >>= html
 
 -- Parse params and return PDF.
 submit :: FormalizeAction ctx a
-submit = fmap formFromParams params >>= maybe submitFailure submitSuccess
+submit = fmap formFromParams params >>= either submitFailure submitSuccess
 
 -- Render form.
 renderHome :: MonadIO m => FormInput -> FlashMessage -> m Text
