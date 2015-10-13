@@ -20,14 +20,9 @@ mustache :: MonadIO m => FilePath -> MuContext m -> m LT.Text
 mustache file = hastacheFile defaultConfig path
     where path = viewFolder </> file
 
--- Empty context for 'static' views.
-nullContext :: MonadIO m => MuContext m
-nullContext = mkStrContext $ const $ MuVariable ("" :: LT.Text)
-
 -- HTML for view containing the main form.
-formHtml :: Maybe FlashMessage -> IO LT.Text
-formHtml Nothing    = mustache "form.mustache" nullContext
-formHtml (Just msg) = mustache "form.mustache" (mkGenericContext msg)
+formHtml :: FormData -> IO LT.Text
+formHtml = mustache "form.mustache" . mkGenericContext
 
 -- HTML for the PDF to render.
 pdfHtml :: FormData -> IO LT.Text

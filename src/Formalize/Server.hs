@@ -22,7 +22,7 @@ appMiddleware = do
 -- Routes for application.
 appRoutes :: FormalizeApp ()
 appRoutes = do
-    get  root      $ Action.home Nothing
+    get  root      $ Action.home
     post "/submit" $ Action.submit
 
 -- Join middlewares and routes to spock app.

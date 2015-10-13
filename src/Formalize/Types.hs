@@ -1,10 +1,10 @@
 {-# LANGUAGE DeriveDataTypeable #-}
 module Formalize.Types where
 
-import Data.Data
-import Data.Text (Text)
-import Data.ByteString (ByteString)
-import Web.Spock.Safe
+import           Data.ByteString (ByteString)
+import           Data.Data
+import           Data.Text       (Text)
+import           Web.Spock.Safe
 
 type PDF = ByteString
 type SessionVal = Maybe SessionId
@@ -20,21 +20,27 @@ data AppState = AppState
     { sPath :: FilePath
     }
 
-data FormData = FormData
-    { _company              :: Text
-    , _email                :: Text
-    , _category_cards_green :: Text
-    , _category_cards_red   :: Text
-    , _topaasia_green       :: Text
-    , _topaasia_red         :: Text
-    , _improvement_green    :: Text
-    , _improvement_red      :: Text
-    , _lead_green           :: Text
-    , _lead_red             :: Text
-    , _last_used            :: Text
-    , _rating               :: Text
+data FormInput = FormInput
+    { fiCompany            :: Text
+    , fiEmail              :: Text
+    , fiCategoryCardsGreen :: Text
+    , fiCategoryCardsRed   :: Text
+    , fiTopaasiaGreen      :: Text
+    , fiTopaasiaRed        :: Text
+    , fiImprovementGreen   :: Text
+    , fiImprovementRed     :: Text
+    , fiLeadGreen          :: Text
+    , fiLeadRed            :: Text
+    , fiLastUsed           :: Text
+    , fiRating             :: Text
     } deriving (Data, Typeable)
 
 data FlashMessage = FlashMessage
     { fmContent :: Text
     } deriving (Data, Typeable)
+
+data FormData = FormData
+    { fdFormInput :: FormInput
+    , fdMessage   :: FlashMessage
+    } deriving (Data, Typeable)
+
