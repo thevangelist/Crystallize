@@ -10,7 +10,6 @@ import           Data.Text                 (Text)
 import           Data.Text.IO              as IO
 import           Data.Text.Lazy            as LT (toStrict)
 import           Formalize.Html
-import           Formalize.Pdf
 import           Formalize.Types
 import           Formalize.Util
 import           Formalize.Validate
@@ -27,9 +26,8 @@ emptyFlash = FlashMessage ""
 submitSuccess :: FormInput -> FormalizeAction ctx a
 submitSuccess formInput = do
     formData <- liftIO $ createFormData formInput emptyFlash
-    pdf <- liftIO $ createPDF formData
     path <- fmap sPath getState
-    liftIO $ savePDF path pdf formData
+    pdf <- liftIO $ saveAsPdf formData path
     setHeader "Content-Type" "application/pdf"
     bytes pdf
 
