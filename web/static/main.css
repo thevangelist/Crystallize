@@ -1,6 +1,6 @@
 /* modified https://github.com/chrisnager/ungrid */
 
-@media (min-width: 20em) {
+@media (min-width: 45em) {
     .row {
         width: 100%;
         display: table;
@@ -9,6 +9,9 @@
     .col {
         display: table-cell;
     }
+}
+.row {
+    border-spacing: 10px 0;
 }
 ::selection {
     background: #FFF;
@@ -19,7 +22,7 @@ body {
     margin: 0;
 }
 body {
-    font: 16px/40px "Open Sans", "Helvetica", sans-serif;
+    font: 16px/32px "Open Sans", "Helvetica", sans-serif;
     background: url(background.jpg);
     background-size: cover;
 }
@@ -85,9 +88,9 @@ h2 {
     font-weight: 300;
     font-size: 20px;
     margin: 0;
+    font-style: italic;
 }
 label{
-    font-style: italic;
     cursor: pointer;
     clear: both;
     float: left;
