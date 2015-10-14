@@ -42,5 +42,6 @@ data FlashMessage = FlashMessage
 data FormData = FormData
     { fdFormInput :: FormInput
     , fdMessage   :: FlashMessage
+    , fdTimestamp :: Text
     } deriving (Data, Typeable)
 

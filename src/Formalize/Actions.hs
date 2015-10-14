@@ -26,10 +26,10 @@ emptyFlash = FlashMessage ""
 -- Handle successful submit.
 submitSuccess :: FormInput -> FormalizeAction ctx a
 submitSuccess formInput = do
-    let formData = FormData formInput emptyFlash
+    formData <- liftIO $ createFormData formInput emptyFlash
     pdf <- liftIO $ createPDF formData
     path <- fmap sPath getState
-    liftIO $ savePDF path pdf
+    liftIO $ savePDF path pdf formData
     setHeader "Content-Type" "application/pdf"
     bytes pdf
 
@@ -43,8 +43,9 @@ submit = fmap formFromParams params >>= either submitFailure submitSuccess
 
 -- Render form.
 renderHome :: MonadIO m => FormInput -> FlashMessage -> m Text
-renderHome formInput msg = fmap LT.toStrict (liftIO $ formHtml formData)
-    where formData = FormData formInput msg
+renderHome formInput msg = do
+    formData <- liftIO $ createFormData formInput msg
+    fmap LT.toStrict $ liftIO $ formHtml formData
 
 home :: FormalizeAction ctx a
 home = renderHome emptyForm emptyFlash >>= html

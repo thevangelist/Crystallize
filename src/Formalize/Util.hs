@@ -1,11 +1,14 @@
 module Formalize.Util
     ( savePDF
+    , createFormData
     ) where
 
-import           Data.ByteString  (ByteString)
-import qualified Data.ByteString  as BS
-import           Data.Time.LocalTime
+import           Data.ByteString     (ByteString)
+import qualified Data.ByteString     as BS
+import qualified Data.Text           as T
 import           Data.Time.Format
+import           Data.Time.LocalTime
+import           Formalize.Types
 import           System.FilePath
 
 -- Create timestamp for filename.
@@ -20,7 +23,12 @@ filename :: FilePath -> FilePath -> FilePath
 filename path ts = path </> ts <.> "pdf"
 
 -- Save PDF file to path.
-savePDF :: FilePath -> ByteString -> IO ()
-savePDF path file = do
-    ts <- timestamp
-    BS.writeFile (filename path ts) file
+savePDF :: FilePath -> ByteString -> FormData -> IO ()
+savePDF path file fd = BS.writeFile (filename path ts) file
+    where ts = T.unpack $ fdTimestamp fd
+
+-- Construct form data from input, flash message and timestamp.
+createFormData :: FormInput -> FlashMessage -> IO FormData
+createFormData fi fm = do
+    time <- fmap T.pack timestamp
+    return $ FormData fi fm time
