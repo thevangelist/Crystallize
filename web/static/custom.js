@@ -27,8 +27,7 @@ $(document).ready(function(){
     });
   });
 
-  $('#errors a').on('click', function() {
-    $('#errors').slideUp();
+  $('#errors a').on('click', function() {
+      $('#errors').slideUp();
   });
-  
 });
