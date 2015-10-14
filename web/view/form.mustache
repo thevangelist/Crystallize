@@ -15,39 +15,39 @@
         <h1>Kiteyttäjä</h1>
         <form id="crystallized" method="post" action="/submit">
             <h2>Perustiedot</h2>
-            <section>
+            <div class="flow">
                 <label for="company">Yrityksen nimi</label>
                 <input type="text" name="crystal[company]" id="company" autofocus="autofocus" />
                 <label for="email">Sähköposti</label>
                 <input type="email" name="crystal[email]" id="email" />
-            </section>
+            </div>
             <h2>Kategoriakortit</h2>
-            <section>
+            <div class="flow">
                 <label for="category-cards-green">Pelilaudalle valikoituneet vihreiden kategorioiden kortit (pelkkä otsikko riittää)</label>
                 <textarea id="category-cards-green" name="crystal[category_cards_green]" rows="3"></textarea>
                 <label for="category-cards-red">Pelilaudalle valikoituneet punaisten kategorioiden kortit (pelkkä otsikko riittää)</label>
                 <textarea id="category-cards-red" name="crystal[category_cards_red]" rows="3"></textarea>
-            </section>
+            </div>
             <h2>Vihreä topaasia</h2>
-            <section>
+            <div class="flow">
                 <label for="topaasia-green">Topaasia (pelkkä otsikko riittää)</label>
                 <input type="text" name="crystal[topaasia_green]" id="topaasia-green" />
                 <label for="improvement-green">Miten kehitämme seuraavaan pelisessioon mennessä (pienin kokeilu)</label>
                 <textarea id="improvement-green" name="crystal[improvement_green]" rows="3"></textarea>
                 <label for="lead-green">Vetovastuu</label>
                 <input type="text" name="crystal[lead_green]" id="lead-green" />
-            </section>
+            </div>
             <h2>Punainen topaasia</h2>
-            <section>
+            <div class="flow">
                 <label for="topaasia-red">Topaasia (pelkkä otsikko riittää)</label>
                 <input type="text" name="crystal[topaasia_red]" id="topaasia-red" />
                 <label for="improvement-red">Miten kehitämme seuraavaan pelisessioon mennessä (pienin kokeilu)</label>
                 <textarea id="improvement-red" name="crystal[improvement_red]" rows="3"></textarea>
                 <label for="lead-red">Vetovastuu</label>
                 <input type="text" name="crystal[lead_red]" id="lead-red" />
-            </section>
+            </div>
             <h2>Arviointi</h2>
-            <section>
+            <div class="flow">
                 <label>Miten hyödyllinen pelisessio oli käytettyyn aikaan nähden (1-5, 1 = Hyödytön, 5 = erittäin hyödyllinen)</label>
                 <div class="row">
                     <div class="col">
@@ -77,7 +77,7 @@
                     <div class="col"><label for="last-used-yes">Tehty</label><input type="radio" name="crystal[last_used]" value="Tehty" id="last-used-yes" /></div>
                     <div class="col"><label for="last-used-no">Tekemättä</label><input checked="checked" type="radio" name="crystal[last_used]" value="Tekemättä" id="last-used-no" /></div>
                 </div>
-            </section>
+            </div>
             <button type="submit">Lähetä lomake</button>
         </form>
     </div>
