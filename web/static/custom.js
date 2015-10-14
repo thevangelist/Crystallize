@@ -10,11 +10,11 @@ $(document).ready(function(){
 
   $('#crystallized').validate();
 
-  $('input[type="text"],input[type="radio"], input[type="checkbox"], textarea').each(function () {
+  $('.required').each(function () {
     $(this).rules('add', {
       required: true
     });
-    $('input[type="email"]').each(function () {
+    $('.email').each(function () {
       $(this).rules('add', {
         required:  {
           depends:function(){
@@ -30,5 +30,5 @@ $(document).ready(function(){
   $('#errors a').on('click', function() {
     $('#errors').slideUp();
   });
-  
+
 });
