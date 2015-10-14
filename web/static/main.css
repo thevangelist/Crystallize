@@ -46,7 +46,7 @@ body {
     color: #d44f7e;
 }
 label.error {
-  width: 100%;
+    width: 100%;
 }
 .valid {
     color: #029793;
