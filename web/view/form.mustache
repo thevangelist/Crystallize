@@ -23,14 +23,30 @@
             </section>
             <h2>Kategoriakortit</h2>
             <section>
-                <label for="category-cards-green">Pelilaudalle valikoituneet vihreiden kategorioiden kortit (pelkkä otsikko riittää)</label>
-                <textarea id="category-cards-green" name="crystal[category_cards_green]" rows="3"></textarea>
-                <label for="category-cards-red">Pelilaudalle valikoituneet punaisten kategorioiden kortit (pelkkä otsikko riittää)</label>
-                <textarea id="category-cards-red" name="crystal[category_cards_red]" rows="3"></textarea>
+                <div class="row">
+                    <div class="col">
+                        <h3>Vihreät kategoriakortit (otsikko)</h3>
+                        <label for="category-cards-green-1">Vihreä 1</label>
+                        <input type="text" id="category-cards-green-1" placeholder="Syötä ensimmäinen" name="crystal[category_cards_green_1]" />
+                        <label for="category-cards-green-2">Vihreä 2</label>
+                        <input type="text" id="category-cards-green-2" placeholder="Syötä tarvittaessa" name="crystal[category_cards_green_2]" />
+                        <label for="category-cards-green-3">Vihreä 3</label>
+                        <input type="text" id="category-cards-green-3" placeholder="Syötä tarvittaessa" name="crystal[category_cards_green_3]" />
+                    </div>
+                    <div class="col">
+                        <h3>Punaiset kategoriakortit (otsikko)</h3>
+                        <label for="category-cards-red-1">Punainen 1</label>
+                        <input type="text" id="category-cards-red-1" placeholder="Syötä ensimmäinen" name="crystal[category_cards_red_1]" />
+                        <label for="category-cards-red-2">Punainen 2</label>
+                        <input type="text" id="category-cards-red-2" placeholder="Syötä tarvittaessa" name="crystal[category_cards_red_2]" />
+                        <label for="category-cards-red-3">Punainen 3</label>
+                        <input type="text" id="category-cards-red-3" placeholder="Syötä tarvittaessa" name="crystal[category_cards_red_3]" />
+                    </div>
+                </div>
             </section>
             <h2>Vihreä topaasia</h2>
             <section>
-                <label for="topaasia-green">Topaasia (pelkkä otsikko riittää)</label>
+                <label for="topaasia-green">Topaasia (otsikko)</label>
                 <input type="text" name="crystal[topaasia_green]" id="topaasia-green" />
                 <label for="improvement-green">Miten kehitämme seuraavaan pelisessioon mennessä (pienin kokeilu)</label>
                 <textarea id="improvement-green" name="crystal[improvement_green]" rows="3"></textarea>
@@ -39,7 +55,7 @@
             </section>
             <h2>Punainen topaasia</h2>
             <section>
-                <label for="topaasia-red">Topaasia (pelkkä otsikko riittää)</label>
+                <label for="topaasia-red">Topaasia (otsikko)</label>
                 <input type="text" name="crystal[topaasia_red]" id="topaasia-red" />
                 <label for="improvement-red">Miten kehitämme seuraavaan pelisessioon mennessä (pienin kokeilu)</label>
                 <textarea id="improvement-red" name="crystal[improvement_red]" rows="3"></textarea>
