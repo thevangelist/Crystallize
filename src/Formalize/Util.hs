@@ -3,7 +3,6 @@ module Formalize.Util
     , createFormData
     ) where
 
-import           Data.ByteString     (ByteString)
 import qualified Data.ByteString     as BS
 import qualified Data.Text           as T
 import           Data.Time.Format
@@ -13,11 +12,8 @@ import           Formalize.Types
 import           System.FilePath
 
 -- Create timestamp for filename.
-timestamp :: IO FilePath
-timestamp = do
-    let format = "%Y%m%d-%H:%M:%S"
-    now <- getZonedTime
-    return (formatTime defaultTimeLocale format now)
+timestamp :: String -> IO FilePath
+timestamp format = fmap (formatTime defaultTimeLocale format) getZonedTime
 
 -- Generate filename.
 filename :: FilePath -> FilePath -> FilePath
@@ -26,7 +22,7 @@ filename path ts = path </> ts <.> "pdf"
 -- Save form data as PDF.
 saveAsPdf :: FormData -> FilePath -> IO PDF
 saveAsPdf fd path = do
-    let ts = T.unpack $ fdTimestamp fd
+    let ts = fdFileTimestamp fd
     file <- createPDF fd
     BS.writeFile (filename path ts) file
     return file
@@ -34,5 +30,6 @@ saveAsPdf fd path = do
 -- Construct form data from input, flash message and timestamp.
 createFormData :: FormInput -> FlashMessage -> IO FormData
 createFormData fi fm = do
-    time <- fmap T.pack timestamp
-    return $ FormData fi fm time
+    fileTs <- timestamp "%Y%m%d-%H:%M:%S"
+    humanTs <- T.pack <$> timestamp "%d.%m.%Y"
+    return $ FormData fi fm fileTs humanTs

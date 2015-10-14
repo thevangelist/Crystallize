@@ -40,8 +40,9 @@ data FlashMessage = FlashMessage
     } deriving (Data, Typeable)
 
 data FormData = FormData
-    { fdFormInput :: FormInput
-    , fdMessage   :: FlashMessage
-    , fdTimestamp :: Text
+    { fdFormInput      :: FormInput
+    , fdMessage        :: FlashMessage
+    , fdFileTimestamp  :: FilePath
+    , fdHumanTimestamp :: Text
     } deriving (Data, Typeable)
 
