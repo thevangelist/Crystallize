@@ -6,3 +6,6 @@ files/*.pdf
 
 # stack tool
 .stack-work
+
+# slack hook creds
+.slack
