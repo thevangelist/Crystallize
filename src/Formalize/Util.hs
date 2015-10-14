@@ -4,7 +4,7 @@ module Formalize.Util
 
 import           Data.ByteString  (ByteString)
 import qualified Data.ByteString  as BS
-import           Data.Time.Clock
+import           Data.Time.LocalTime
 import           Data.Time.Format
 import           System.FilePath
 
@@ -12,7 +12,7 @@ import           System.FilePath
 timestamp :: IO FilePath
 timestamp = do
     let format = "%Y%m%d-%H:%M:%S"
-    now <- getCurrentTime
+    now <- getZonedTime
     return (formatTime defaultTimeLocale format now)
 
 -- Generate filename.
