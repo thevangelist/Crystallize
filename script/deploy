@@ -39,6 +39,8 @@ rm ${package_name}"
 ssh $remote $CMD
 echo "==> Deployed"
 
+script/slack_hook
+
 echo "==> Cleaning up..."
 rm $app_name
 rm $package_name

@@ -1,0 +1,31 @@
+#!/bin/sh
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+TEXT="Crystallize was deployed by ${USER}"
+CHANNEL="#github"
+USER="tyä_ukko"
+EMOJI=":construction_worker:"
+
+# Construct the payload JSON.
+JSON="\
+payload={\
+\"text\": \"${TEXT}\", \
+\"channel\": \"${CHANNEL}\", \
+\"username\": \"${USER}\", \
+\"icon_emoji\": \"${EMOJI}\"\
+}"
+
+echo "==> Checking config file..."
+if [ -e .slack ]; then
+  echo "==> Config OK"
+  SLACK=$(<.slack)
+  URL="https://hooks.slack.com/services/${SLACK}"
+  curl -X POST --data-urlencode "${JSON}" $URL
+  echo ""
+  echo "==> Slack message sent"
+else
+  echo "==> No .slack file found. Exiting"
+fi
