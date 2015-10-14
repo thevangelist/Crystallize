@@ -1,4 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
+-- TODO: clean up the validation.
 module Formalize.Validate
     ( formFromParams
     ) where
@@ -25,8 +26,12 @@ mValues :: Params -> [Maybe Text]
 mValues params =
     [ M.lookup "company" params
     , M.lookup "email" params
-    , M.lookup "category_cards_green" params
-    , M.lookup "category_cards_red" params
+    , M.lookup "category_cards_green_1" params
+    , M.lookup "category_cards_green_2" params
+    , M.lookup "category_cards_green_3" params
+    , M.lookup "category_cards_red_1" params
+    , M.lookup "category_cards_red_2" params
+    , M.lookup "category_cards_red_3" params
     , M.lookup "topaasia_green" params
     , M.lookup "topaasia_red" params
     , M.lookup "improvement_green" params
@@ -37,13 +42,29 @@ mValues params =
     , M.lookup "rating" params
     ]
 
+greenCards :: Params -> Text
+greenCards ps =
+    let cards = [ ps M.! "category_cards_green_1"
+                , ps M.! "category_cards_green_2"
+                , ps M.! "category_cards_green_3"
+                ]
+    in T.intercalate ", " $ filter (/= "") cards
+
+redCards :: Params -> Text
+redCards ps =
+    let cards = [ ps M.! "category_cards_red_1"
+                , ps M.! "category_cards_red_2"
+                , ps M.! "category_cards_red_3"
+                ]
+    in T.intercalate ", " $ filter (/= "") cards
+
 -- Create form from valid params map.
 createForm :: Params -> FormInput
 createForm ps =
     FormInput (ps M.! "company")
               (ps M.! "email")
-              (ps M.! "category_cards_green")
-              (ps M.! "category_cards_red")
+              (greenCards ps)
+              (redCards ps)
               (ps M.! "topaasia_green")
               (ps M.! "topaasia_red")
               (ps M.! "improvement_green")
@@ -58,6 +79,6 @@ formFromParams :: [(Text,Text)] -> Either Text FormInput
 formFromParams ps =
     let params     = filterForm "crystal" ps
         mValueList = mValues params
-        valid      = (==) 12 . length $ catMaybes mValueList
+        valid      = (==) 16 . length $ catMaybes mValueList
         errorMsg   = "Syötit virheellistä tietoa, ole hyvä ja korjaa lomake."
         in if valid then Right (createForm params) else Left errorMsg
