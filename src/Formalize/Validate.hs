@@ -13,6 +13,16 @@ import           Formalize.Types
 
 type Params = Map Text Text
 
+-- Try to create form from params list.
+formFromParams :: [(Text,Text)] -> Either (FormInput,Text) FormInput
+formFromParams ps =
+    let params     = filterForm "crystal" ps
+        mValueList = mValues params
+    in if (==) 22 . length $ catMaybes mValueList
+        then Right (goodForm params)
+        else Left (errorForm params)
+
+
 -- Filter only wanted form params.
 filterForm :: Text -> [(Text,Text)] -> Params
 filterForm prefix =
@@ -21,9 +31,45 @@ filterForm prefix =
         g (k,v) = (parse k, v)
     in M.fromList . map g . filter f
 
+-- Create form with error message.
+errorForm :: Params -> (FormInput,Text)
+errorForm ps =
+    let errorMsg     = "Syötit virheellistä tietoa, ole hyvä ja korjaa lomake."
+        filledParams = M.union ps defaultParams
+    in (goodForm filledParams, errorMsg)
+
+-- Create form from valid params map.
+goodForm :: Params -> FormInput
+goodForm ps =
+    FormInput (ps M.! "company")
+              (ps M.! "email")
+              (greenCards ps)
+              (redCards ps)
+              (ps M.! "topaasia_green")
+              (ps M.! "topaasia_red")
+              (ps M.! "improvement_green")
+              (ps M.! "improvement_red")
+              (ps M.! "lead_green")
+              (ps M.! "lead_red")
+              (ps M.! "last_used")
+              (ps M.! "rating")
+
 -- Return list of maybe values from params.
 mValues :: Params -> [Maybe Text]
 mValues ps = map (`M.lookup` ps) defaults
+
+defaultParams :: Params
+defaultParams = M.fromList $ zip defaults (repeat "")
+
+greenCards :: Params -> Text
+greenCards ps =
+    let cards = map (\ k -> ps M.! k) greens
+    in T.intercalate ", " $ filter (/= "") cards
+
+redCards :: Params -> Text
+redCards ps =
+    let cards = map (\ k -> ps M.! k) reds
+    in T.intercalate ", " $ filter (/= "") cards
 
 defaults :: [Text]
 defaults =
@@ -60,48 +106,3 @@ greens =
     , "category_cards_green_5"
     , "category_cards_green_6"
     ]
-
-greenCards :: Params -> Text
-greenCards ps =
-    let cards = map (\ k -> ps M.! k) greens
-    in T.intercalate ", " $ filter (/= "") cards
-
-redCards :: Params -> Text
-redCards ps =
-    let cards = map (\ k -> ps M.! k) reds
-    in T.intercalate ", " $ filter (/= "") cards
-
--- Create form from valid params map.
-goodForm :: Params -> FormInput
-goodForm ps =
-    FormInput (ps M.! "company")
-              (ps M.! "email")
-              (greenCards ps)
-              (redCards ps)
-              (ps M.! "topaasia_green")
-              (ps M.! "topaasia_red")
-              (ps M.! "improvement_green")
-              (ps M.! "improvement_red")
-              (ps M.! "lead_green")
-              (ps M.! "lead_red")
-              (ps M.! "last_used")
-              (ps M.! "rating")
-
-defaultParams :: Params
-defaultParams = M.fromList $ zip defaults (repeat "")
-
--- Create form with error message.
-errorForm :: Params -> (FormInput,Text)
-errorForm ps =
-    let errorMsg     = "Syötit virheellistä tietoa, ole hyvä ja korjaa lomake."
-        filledParams = M.union ps defaultParams
-    in (goodForm filledParams, errorMsg)
-
--- Try to create form from params list.
-formFromParams :: [(Text,Text)] -> Either (FormInput,Text) FormInput
-formFromParams ps =
-    let params     = filterForm "crystal" ps
-        mValueList = mValues params
-    in if (==) 22 . length $ catMaybes mValueList
-        then Right (goodForm params)
-        else Left (errorForm params)

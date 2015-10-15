@@ -18,6 +18,7 @@ pdfFromParams ps path =
          Right x -> do pdf <- validInput path x
                        return $ Right pdf
 
+
 -- Create form data containing error message.
 invalidInput :: (FormInput,Text) -> IO FormData
 invalidInput (fi,msg) = createFormData fi $ FlashMessage msg

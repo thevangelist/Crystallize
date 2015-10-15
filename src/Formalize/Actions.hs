@@ -16,15 +16,9 @@ import           Formalize.Util
 import           Network.HTTP.Types.Status (status404)
 import           Web.Spock
 
--- Handle successful submit.
-submitSuccess :: PDF -> FormalizeAction ctx a
-submitSuccess pdf = do
-    setHeader "Content-Type" "application/pdf"
-    bytes pdf
-
--- Handle failed submit.
-submitFailure :: FormData -> FormalizeAction ctx a
-submitFailure fd = html =<< renderHome fd
+-- Render home page.
+home :: FormalizeAction ctx a
+home = html =<< renderHome =<< liftIO createEmptyFormData
 
 -- Parse params and return PDF.
 submit :: FormalizeAction ctx a
@@ -34,16 +28,23 @@ submit = do
     result <- liftIO $ pdfFromParams ps path
     either submitFailure submitSuccess result
 
--- Render form.
-renderHome :: MonadIO m => FormData -> m Text
-renderHome = fmap LT.toStrict . liftIO . formHtml
-
--- Render home page.
-home :: FormalizeAction ctx a
-home = html =<< renderHome =<< liftIO createEmptyFormData
-
 -- Render custom 404 page.
 notFound :: [Text] -> FormalizeAction ctx a
 notFound _ = do
     setStatus status404
     html =<< liftIO (IO.readFile "web/static/404.html")
+
+
+-- Render form.
+renderHome :: MonadIO m => FormData -> m Text
+renderHome = fmap LT.toStrict . liftIO . formHtml
+
+-- Handle successful submit.
+submitSuccess :: PDF -> FormalizeAction ctx a
+submitSuccess pdf = do
+    setHeader "Content-Type" "application/pdf"
+    bytes pdf
+
+-- Handle failed submit.
+submitFailure :: FormData -> FormalizeAction ctx a
+submitFailure fd = html =<< renderHome fd

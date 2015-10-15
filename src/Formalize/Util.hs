@@ -14,14 +14,6 @@ import           Formalize.Pdf
 import           Formalize.Types
 import           System.FilePath
 
--- Create timestamp for filename.
-timestamp :: String -> IO FilePath
-timestamp format = fmap (formatTime defaultTimeLocale format) getZonedTime
-
--- Generate filename.
-filename :: FilePath -> FilePath -> FilePath
-filename path ts = path </> ts <.> "pdf"
-
 -- Save form data as PDF.
 saveAsPdf :: FormData -> FilePath -> IO PDF
 saveAsPdf fd path = do
@@ -39,6 +31,15 @@ createFormData fi fm = do
 
 createEmptyFormData :: IO FormData
 createEmptyFormData = createFormData emptyForm emptyFlash
+
+
+-- Create timestamp for filename.
+timestamp :: String -> IO FilePath
+timestamp format = fmap (formatTime defaultTimeLocale format) getZonedTime
+
+-- Generate filename.
+filename :: FilePath -> FilePath -> FilePath
+filename path ts = path </> ts <.> "pdf"
 
 emptyForm :: FormInput
 emptyForm = FormInput "" "" "" "" "" "" "" "" "" "" "" ""

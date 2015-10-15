@@ -9,6 +9,15 @@ import           Network.Wai.Middleware.RequestLogger
 import           Network.Wai.Middleware.Static
 import           Web.Spock.Safe
 
+-- Run the spock app.
+runServer :: AppConfig -> IO ()
+runServer conf =
+    let port = cPort conf
+        state = AppState $ cPath conf
+        spockCfg = defaultSpockCfg Nothing PCNoDatabase state
+    in runSpock port $ spock spockCfg formalizerApp
+
+
 -- Path for static files like .js and .css.
 staticPath :: String
 staticPath = "web/static"
@@ -29,11 +38,3 @@ appRoutes = do
 -- Join middlewares and routes to spock app.
 formalizerApp :: FormalizeApp ()
 formalizerApp = appMiddleware >> appRoutes
-
--- Run the spock app.
-runServer :: AppConfig -> IO ()
-runServer conf =
-    let port = cPort conf
-        state = AppState $ cPath conf
-        spockCfg = defaultSpockCfg Nothing PCNoDatabase state
-    in runSpock port $ spock spockCfg formalizerApp

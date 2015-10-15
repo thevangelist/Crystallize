@@ -15,6 +15,7 @@ import           System.Process
 createPDF :: FormData -> IO PDF
 createPDF fd = pdfHtml fd >>= html2PDF
 
+
 -- Options for wkhtmltopdf tool.
 pdfOptions :: [String]
 pdfOptions = [ "--quiet"
