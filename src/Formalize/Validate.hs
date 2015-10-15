@@ -23,56 +23,57 @@ filterForm prefix =
 
 -- Return list of maybe values from params.
 mValues :: Params -> [Maybe Text]
-mValues params =
-    [ M.lookup "company" params
-    , M.lookup "email" params
-    , M.lookup "category_cards_green_1" params
-    , M.lookup "category_cards_green_2" params
-    , M.lookup "category_cards_green_3" params
-    , M.lookup "category_cards_green_4" params
-    , M.lookup "category_cards_green_5" params
-    , M.lookup "category_cards_green_6" params
-    , M.lookup "category_cards_red_1" params
-    , M.lookup "category_cards_red_2" params
-    , M.lookup "category_cards_red_3" params
-    , M.lookup "category_cards_red_4" params
-    , M.lookup "category_cards_red_5" params
-    , M.lookup "category_cards_red_6" params
-    , M.lookup "topaasia_green" params
-    , M.lookup "topaasia_red" params
-    , M.lookup "improvement_green" params
-    , M.lookup "improvement_red" params
-    , M.lookup "lead_green" params
-    , M.lookup "lead_red" params
-    , M.lookup "last_used" params
-    , M.lookup "rating" params
+mValues ps = map (`M.lookup` ps) defaults
+
+defaults :: [Text]
+defaults =
+    [ "company"
+    , "email"
+    , "topaasia_green"
+    , "topaasia_red"
+    , "improvement_green"
+    , "improvement_red"
+    , "lead_green"
+    , "lead_red"
+    , "last_used"
+    , "rating"
+    ]
+    ++ reds
+    ++ greens
+
+reds :: [Text]
+reds =
+    [ "category_cards_red_1"
+    , "category_cards_red_2"
+    , "category_cards_red_3"
+    , "category_cards_red_4"
+    , "category_cards_red_5"
+    , "category_cards_red_6"
+    ]
+
+greens :: [Text]
+greens =
+    [ "category_cards_green_1"
+    , "category_cards_green_2"
+    , "category_cards_green_3"
+    , "category_cards_green_4"
+    , "category_cards_green_5"
+    , "category_cards_green_6"
     ]
 
 greenCards :: Params -> Text
 greenCards ps =
-    let cards = [ ps M.! "category_cards_green_1"
-                , ps M.! "category_cards_green_2"
-                , ps M.! "category_cards_green_3"
-                , ps M.! "category_cards_green_4"
-                , ps M.! "category_cards_green_5"
-                , ps M.! "category_cards_green_6"
-                ]
+    let cards = map (\ k -> ps M.! k) greens
     in T.intercalate ", " $ filter (/= "") cards
 
 redCards :: Params -> Text
 redCards ps =
-    let cards = [ ps M.! "category_cards_red_1"
-                , ps M.! "category_cards_red_2"
-                , ps M.! "category_cards_red_3"
-                , ps M.! "category_cards_red_4"
-                , ps M.! "category_cards_red_5"
-                , ps M.! "category_cards_red_6"
-                ]
+    let cards = map (\ k -> ps M.! k) reds
     in T.intercalate ", " $ filter (/= "") cards
 
 -- Create form from valid params map.
-createForm :: Params -> FormInput
-createForm ps =
+goodForm :: Params -> FormInput
+goodForm ps =
     FormInput (ps M.! "company")
               (ps M.! "email")
               (greenCards ps)
@@ -86,11 +87,21 @@ createForm ps =
               (ps M.! "last_used")
               (ps M.! "rating")
 
+defaultParams :: Params
+defaultParams = M.fromList $ zip defaults (repeat "")
+
+-- Create form with error message.
+errorForm :: Params -> (FormInput,Text)
+errorForm ps =
+    let errorMsg     = "Syötit virheellistä tietoa, ole hyvä ja korjaa lomake."
+        filledParams = M.union ps defaultParams
+    in (goodForm filledParams, errorMsg)
+
 -- Try to create form from params list.
-formFromParams :: [(Text,Text)] -> Either Text FormInput
+formFromParams :: [(Text,Text)] -> Either (FormInput,Text) FormInput
 formFromParams ps =
     let params     = filterForm "crystal" ps
         mValueList = mValues params
-        valid      = (==) 22 . length $ catMaybes mValueList
-        errorMsg   = "Syötit virheellistä tietoa, ole hyvä ja korjaa lomake."
-        in if valid then Right (createForm params) else Left errorMsg
+    in if (==) 22 . length $ catMaybes mValueList
+        then Right (goodForm params)
+        else Left (errorForm params)

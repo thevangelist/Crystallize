@@ -1,6 +1,9 @@
+{-# LANGUAGE OverloadedStrings #-}
 module Formalize.Util
     ( saveAsPdf
     , createFormData
+    , createEmptyFormData
+    , emptyFlash
     ) where
 
 import qualified Data.ByteString     as BS
@@ -33,3 +36,12 @@ createFormData fi fm = do
     fileTs <- timestamp "%Y%m%d-%H:%M:%S"
     humanTs <- T.pack <$> timestamp "%d.%m.%Y"
     return $ FormData fi fm fileTs humanTs
+
+createEmptyFormData :: IO FormData
+createEmptyFormData = createFormData emptyForm emptyFlash
+
+emptyForm :: FormInput
+emptyForm = FormInput "" "" "" "" "" "" "" "" "" "" "" ""
+
+emptyFlash :: FlashMessage
+emptyFlash = FlashMessage ""

@@ -17,6 +17,7 @@ executable formalize
   other-modules:
     Formalize.Actions,
     Formalize.Config,
+    Formalize.Formalizer,
     Formalize.Server,
     Formalize.Html,
     Formalize.Pdf,
