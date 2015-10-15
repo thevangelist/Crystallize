@@ -13,8 +13,8 @@ before_install:
   - chmod a+x ~/.local/bin/stack
 
 install:
-  - stack setup --no-terminal --skip-ghc-check
-  - stack test --no-terminal --skip-ghc-check --only-snapshot
+  - stack --no-terminal setup
+  - stack --no-terminal build --only-snapshot
 
 script:
-  - stack test --no-terminal --skip-ghc-check
+  - stack --no-terminal test
