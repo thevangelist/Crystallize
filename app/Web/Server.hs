@@ -1,13 +1,13 @@
 {-# LANGUAGE OverloadedStrings #-}
-module Formalize.Server
+module Web.Server
     ( runServer
     ) where
 
-import           Formalize.Actions                    as Action
-import           Formalize.Types
 import           Network.Wai.Middleware.RequestLogger
 import           Network.Wai.Middleware.Static
+import           Web.Actions                          as Action
 import           Web.Spock.Safe
+import           Web.Types
 
 -- Run the spock app.
 runServer :: AppConfig -> IO ()

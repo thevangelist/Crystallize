@@ -4,21 +4,8 @@ module Formalize.Types where
 import           Data.ByteString (ByteString)
 import           Data.Data
 import           Data.Text       (Text)
-import           Web.Spock.Safe
 
 type PDF = ByteString
-type SessionVal = Maybe SessionId
-type FormalizeApp ctx = SpockCtxM ctx () SessionVal AppState ()
-type FormalizeAction ctx a = SpockActionCtx ctx () SessionVal AppState a
-
-data AppConfig = AppConfig
-    { cPort :: Int
-    , cPath :: FilePath
-    }
-
-data AppState = AppState
-    { sPath :: FilePath
-    }
 
 data FormInput = FormInput
     { fiCompany            :: Text

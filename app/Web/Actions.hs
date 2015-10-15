@@ -1,5 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
-module Formalize.Actions
+module Web.Actions
     ( home
     , submit
     , notFound
@@ -15,6 +15,7 @@ import           Formalize.Types
 import           Formalize.Util
 import           Network.HTTP.Types.Status (status404)
 import           Web.Spock
+import           Web.Types
 
 -- Render home page.
 home :: FormalizeAction ctx a

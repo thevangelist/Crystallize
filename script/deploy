@@ -4,12 +4,15 @@ set -e
 
 cd "$(dirname "$0")/.."
 
-local_bin=".stack-work/dist/x86_64-linux/*/build/formalize/formalize"
+local_bin=".stack-work/dist/x86_64-linux/*/build/formalize-exe/formalize-exe"
 app_name="formalize"
 folders="web"
 package_name="package.tar.gz"
 remote="formalize"
 deploy_path="/var/www/apps/${app_name}/app"
+
+echo "==> Running tests..."
+script/test
 
 echo "==> Testing SSH connection..."
 ssh $remote "uname -a"

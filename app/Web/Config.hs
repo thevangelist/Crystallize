@@ -1,10 +1,10 @@
 {-# LANGUAGE OverloadedStrings #-}
-module Formalize.Config
+module Web.Config
     ( readConfig
     ) where
 
 import qualified Data.Configurator as C
-import           Formalize.Types
+import           Web.Types
 
 -- Read config file.
 readConfig :: FilePath -> IO AppConfig
