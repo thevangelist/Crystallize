@@ -1,0 +1,20 @@
+language: haskell
+
+sudo: false
+  cache:
+  directories:
+  - $HOME/.stack/
+
+before_install:
+  # stack
+  - mkdir -p ~/.local/bin
+  - export PATH=~/.local/bin:$PATH
+  - travis_retry curl -L https://github.com/commercialhaskell/stack/releases/download/v0.1.4.0/stack-0.1.4.0-x86_64-linux.tar.gz | tar xz -C ~/.local/bin
+  - chmod a+x ~/.local/bin/stack
+
+install:
+  - ./travis_long stack setup --no-terminal --skip-ghc-check
+  - ./travis_long stack test --no-terminal --skip-ghc-check --only-snapshot
+
+script:
+  - stack test --no-terminal --skip-ghc-check
