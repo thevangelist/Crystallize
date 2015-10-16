@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Web.Server
     ( runServer
+    , formalizerApp -- Exposed for testing.
     ) where
 
 import           Network.Wai.Middleware.RequestLogger
