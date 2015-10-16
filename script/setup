@@ -23,6 +23,7 @@ else
   exit 1
 fi
 
-echo "==> Creating a folder for PDF files..."
+echo "==> Creating a folders for PDF files..."
 mkdir -p files
+mkdir -p test-files
 echo "==> Setup done!"

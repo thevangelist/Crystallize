@@ -28,11 +28,38 @@ spec = with app $ do
       get "/nonexistingroute" `shouldRespondWith` matcher
 
   describe "POST /submit" $ do
-    it "responds 200" $
-      post "/submit" "test" `shouldRespondWith` 200
+    it "responds 400 with incorrect params" $
+      postHtmlForm "/submit" [("test","")] `shouldRespondWith` 400
+    it "responds 200 with correct params" $
+      postHtmlForm "/submit" validParams `shouldRespondWith` 200
 
 
 app = spockAsApp $ spock spockCfg formalizerApp
   where
     state    = AppState "test-files"
     spockCfg = defaultSpockCfg Nothing PCNoDatabase state
+
+validParams =
+    [ ("crystal[company]","")
+    , ("crystal[email]","")
+    , ("crystal[topaasia_green]","")
+    , ("crystal[topaasia_red]","")
+    , ("crystal[improvement_green]","")
+    , ("crystal[improvement_red]","")
+    , ("crystal[lead_green]","")
+    , ("crystal[lead_red]","")
+    , ("crystal[last_used]","")
+    , ("crystal[rating]","")
+    , ("crystal[category_cards_red_1]","")
+    , ("crystal[category_cards_red_2]","")
+    , ("crystal[category_cards_red_3]","")
+    , ("crystal[category_cards_red_4]","")
+    , ("crystal[category_cards_red_5]","")
+    , ("crystal[category_cards_red_6]","")
+    , ("crystal[category_cards_green_1]","")
+    , ("crystal[category_cards_green_2]","")
+    , ("crystal[category_cards_green_3]","")
+    , ("crystal[category_cards_green_4]","")
+    , ("crystal[category_cards_green_5]","")
+    , ("crystal[category_cards_green_6]","")
+    ]

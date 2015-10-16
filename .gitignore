@@ -3,6 +3,7 @@
 
 # generated PDF files.
 files
+test-files
 
 # stack tool
 .stack-work

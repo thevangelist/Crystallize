@@ -12,7 +12,7 @@ import           Data.Text.Lazy            as LT (toStrict)
 import           Formalize.Formalizer
 import           Formalize.Html
 import           Formalize.Types
-import           Network.HTTP.Types.Status (status404)
+import           Network.HTTP.Types.Status (status404, status400)
 import           Web.Spock
 import           Web.Types
 
@@ -47,4 +47,6 @@ submitSuccess pdf = do
 
 -- Handle failed submit.
 submitFailure :: FormData -> FormalizeAction ctx a
-submitFailure fd = html =<< renderHome fd
+submitFailure fd = do
+    setStatus status400
+    html =<< renderHome fd
