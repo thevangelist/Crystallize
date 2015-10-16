@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Lepovirta/Crystallize.svg?branch=master)](https://travis-ci.org/Lepovirta/Crystallize)
+
 # Formalize it
 
 A form which 1) turns answers into a neat PDF & 2) Saves them for later viewing for admins. 
