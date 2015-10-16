@@ -2,7 +2,7 @@
 .DS_Store
 
 # generated PDF files.
-files/*.pdf
+files
 
 # stack tool
 .stack-work
