@@ -18,9 +18,9 @@ library
       Formalize.Formalizer
     , Formalize.Html
     , Formalize.Types
-    , Formalize.Util
   other-modules:
       Formalize.Pdf
+    , Formalize.Util
     , Formalize.Validate
   build-depends:
       base >= 4.7 && < 5

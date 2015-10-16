@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Formalize.Formalizer
         ( pdfFromParams
+        , emptyFormData
         ) where
 
 import           Data.Text          (Text)
@@ -17,6 +18,10 @@ pdfFromParams ps path =
                        return $ Left fd
          Right x -> do pdf <- validInput path x
                        return $ Right pdf
+
+-- Empty data is used when rendering the form first time.
+emptyFormData :: IO FormData
+emptyFormData = createEmptyFormData
 
 
 -- Create form data containing error message.

@@ -12,14 +12,13 @@ import           Data.Text.Lazy            as LT (toStrict)
 import           Formalize.Formalizer
 import           Formalize.Html
 import           Formalize.Types
-import           Formalize.Util
 import           Network.HTTP.Types.Status (status404)
 import           Web.Spock
 import           Web.Types
 
 -- Render home page.
 home :: FormalizeAction ctx a
-home = html =<< renderHome =<< liftIO createEmptyFormData
+home = html =<< renderHome =<< liftIO emptyFormData
 
 -- Parse params and return PDF.
 submit :: FormalizeAction ctx a
