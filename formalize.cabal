@@ -19,9 +19,9 @@ library
     , Formalize.Html
     , Formalize.Types
   other-modules:
-      Formalize.Pdf
-    , Formalize.Util
-    , Formalize.Validate
+      Formalize.Internal.Pdf
+    , Formalize.Internal.Util
+    , Formalize.Internal.Validate
   build-depends:
       base >= 4.7 && < 5
     , bytestring >= 0.10

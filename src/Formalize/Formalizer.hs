@@ -6,8 +6,8 @@ module Formalize.Formalizer
 
 import           Data.Text          (Text)
 import           Formalize.Types
-import           Formalize.Util
-import           Formalize.Validate
+import           Formalize.Internal.Util
+import           Formalize.Internal.Validate
 
 -- TODO: Simplify Left Right handling.
 -- Try to create PDF file from params.

@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 -- TODO: clean up the validation.
-module Formalize.Validate
+module Formalize.Internal.Validate
     ( formFromParams
     ) where
 

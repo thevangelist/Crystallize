@@ -1,5 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
-module Formalize.Util
+module Formalize.Internal.Util
     ( saveAsPdf
     , createFormData
     , createEmptyFormData
@@ -10,7 +10,7 @@ import qualified Data.ByteString     as BS
 import qualified Data.Text           as T
 import           Data.Time.Format
 import           Data.Time.LocalTime
-import           Formalize.Pdf
+import           Formalize.Internal.Pdf
 import           Formalize.Types
 import           System.FilePath
 

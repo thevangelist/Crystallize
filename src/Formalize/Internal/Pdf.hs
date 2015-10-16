@@ -1,4 +1,4 @@
-module Formalize.Pdf
+module Formalize.Internal.Pdf
     ( createPDF
     ) where
 
