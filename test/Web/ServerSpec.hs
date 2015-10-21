@@ -50,6 +50,7 @@ validParams =
     , ("crystal[lead_red]","")
     , ("crystal[last_used]","")
     , ("crystal[rating]","")
+    , ("crystal[next_session]","")
     , ("crystal[category_cards_red_1]","")
     , ("crystal[category_cards_red_2]","")
     , ("crystal[category_cards_red_3]","")

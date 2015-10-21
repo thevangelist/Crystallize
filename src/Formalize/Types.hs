@@ -20,6 +20,7 @@ data FormInput = FormInput
     , fiLeadRed            :: Text
     , fiLastUsed           :: Text
     , fiRating             :: Text
+    , fiNextSession        :: Text
     } deriving (Data, Typeable)
 
 data FlashMessage = FlashMessage

@@ -42,7 +42,7 @@ filename :: FilePath -> FilePath -> FilePath
 filename path ts = path </> ts <.> "pdf"
 
 emptyForm :: FormInput
-emptyForm = FormInput "" "" "" "" "" "" "" "" "" "" "" ""
+emptyForm = FormInput "" "" "" "" "" "" "" "" "" "" "" "" ""
 
 emptyFlash :: FlashMessage
 emptyFlash = FlashMessage ""
