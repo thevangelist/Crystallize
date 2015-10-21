@@ -18,7 +18,8 @@ formFromParams :: [(Text,Text)] -> Either (FormInput,Text) FormInput
 formFromParams ps =
     let params     = filterForm "crystal" ps
         mValueList = mValues params
-    in if (==) 22 . length $ catMaybes mValueList
+        len        = length defaults
+    in if (==) len . length $ catMaybes mValueList
         then Right (goodForm params)
         else Left (errorForm params)
 
@@ -53,6 +54,7 @@ goodForm ps =
               (ps M.! "lead_red")
               (ps M.! "last_used")
               (ps M.! "rating")
+              (ps M.! "next_session")
 
 -- Return list of maybe values from params.
 mValues :: Params -> [Maybe Text]
@@ -83,6 +85,7 @@ defaults =
     , "lead_red"
     , "last_used"
     , "rating"
+    , "next_session"
     ]
     ++ reds
     ++ greens
