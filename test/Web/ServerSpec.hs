@@ -7,9 +7,11 @@ module Web.ServerSpec
 import           Data.ByteString.Lazy as BS
 import           Test.Hspec
 import           Test.Hspec.Wai
-import           Web.Server
 import           Web.Spock.Safe       hiding (get, post)
 import           Web.Spock.Shared
+
+import           Formalize.Types
+import           Web.Server
 import           Web.Types
 
 main :: IO ()
@@ -36,7 +38,8 @@ spec = with app $ do
 
 app = spockAsApp $ spock spockCfg formalizerApp
   where
-    state    = AppState "test-files"
+    smtp     = SMTPInfo "" 0 "" "" ""
+    state    = AppState "test-files" smtp
     spockCfg = defaultSpockCfg Nothing PCNoDatabase state
 
 validParams =

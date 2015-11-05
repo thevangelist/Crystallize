@@ -25,7 +25,8 @@ submit :: FormalizeAction ctx a
 submit = do
     ps     <- params
     path   <- fmap sPath getState
-    result <- liftIO $ pdfFromParams ps path
+    smtp   <- fmap sSMTP getState
+    result <- liftIO $ pdfFromParams ps path smtp
     either submitFailure submitSuccess result
 
 -- Render custom 404 page.

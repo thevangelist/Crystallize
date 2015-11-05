@@ -34,3 +34,10 @@ data FormData = FormData
     , fdHumanTimestamp :: Text
     } deriving (Data, Typeable)
 
+data SMTPInfo = SMTPInfo
+    { iSMTPHost   :: Text
+    , iSMTPPort   :: Int
+    , iSMTPFrom   :: Text
+    , iSMTPUser   :: Text
+    , iSMTPPAsswd :: Text
+    }
