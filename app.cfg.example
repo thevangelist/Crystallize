@@ -1,2 +1,7 @@
 port = 8000
 path = "files"
+SMTPHost = ""
+SMTPPort = 8025
+SMTPFrom = ""
+SMTPUser = ""
+SMTPPasswd = ""
