@@ -13,7 +13,7 @@ import           Network.Mail.SMTP
 
 import           Formalize.Types
 
--- Email PDF file to user using SMTP configurations.
+-- Email PDF file to user using SMTP configurations. Return the given PDF.
 emailPDF :: SMTPInfo -> Text -> PDF -> IO PDF
 emailPDF smtp toEmail pdf = do
     let subject = "Kiteyttäjä"
@@ -25,6 +25,7 @@ emailPDF smtp toEmail pdf = do
     when (hostExists smtp) $ sendEmail smtp mail
     return pdf
 
+-- Create PDF file attachment.
 pdfPart :: PDF -> Part
 pdfPart pdf =
     Part
@@ -34,9 +35,11 @@ pdfPart pdf =
         []
         (LB.fromStrict pdf)
 
+-- Content of the email.
 emailMessage :: LT.Text
 emailMessage = "Tässä luomasi PDF.\n\nt: kiteyttäjä"
 
+-- Send email using given STMP configuration.
 sendEmail :: SMTPInfo -> Mail -> IO ()
 sendEmail smtp =
     sendMailWithLogin'
@@ -45,5 +48,6 @@ sendEmail smtp =
         (T.unpack     $ iSMTPUser smtp)
         (T.unpack     $ iSMTPPAsswd smtp)
 
+-- Check that host exists in STMP configuration. (Testing uses host = "")
 hostExists :: SMTPInfo -> Bool
 hostExists smtp = T.length (iSMTPHost smtp) > 0
