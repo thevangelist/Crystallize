@@ -1,7 +1,9 @@
-port = 8000
+port = 8080
 path = "files"
-SMTPHost = ""
-SMTPPort = 8025
-SMTPFrom = ""
-SMTPUser = ""
-SMTPPasswd = ""
+smtp {
+  host = ""
+  port = 8025
+  from = ""
+  user = ""
+  passwd = ""
+}
