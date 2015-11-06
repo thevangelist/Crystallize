@@ -7,7 +7,6 @@ module Web.Server
 import           Network.Wai.Middleware.RequestLogger
 import           Network.Wai.Middleware.Static
 
-import           Formalize.Types
 import           Web.Actions                          as Action
 import           Web.Spock.Safe
 import           Web.Types
@@ -16,9 +15,7 @@ import           Web.Types
 runServer :: AppConfig -> IO ()
 runServer conf =
     let port = cPort conf
-        smtpInfo = SMTPInfo (cSMTPHost conf) (cSMTPPort conf) (cSMTPFrom conf)
-                            (cSMTPUser conf) (cSMTPPAsswd conf)
-        state = AppState (cPath conf) smtpInfo
+        state = AppState (cPath conf) (cSMTP conf)
         spockCfg = defaultSpockCfg Nothing PCNoDatabase state
     in runSpock port $ spock spockCfg formalizerApp
 
