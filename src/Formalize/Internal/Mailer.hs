@@ -35,10 +35,6 @@ pdfPart pdf =
         []
         (LB.fromStrict pdf)
 
--- Content of the email.
-emailMessage :: LT.Text
-emailMessage = "Tässä luomasi PDF.\n\nt: kiteyttäjä"
-
 -- Send email using given STMP configuration.
 sendEmail :: SMTPInfo -> Mail -> IO ()
 sendEmail smtp =
@@ -51,3 +47,23 @@ sendEmail smtp =
 -- Check that host exists in STMP configuration. (Testing uses host = "")
 hostExists :: SMTPInfo -> Bool
 hostExists smtp = T.length (iSMTPHost smtp) > 0
+
+-- Content of the email.
+emailMessage :: LT.Text
+emailMessage =
+    "Moi!\n\
+    \ \n\
+    \Toivottavasti pelihetki oli antoisa - tässä Kiteyttäjä. Huomaat Kiteyttäjän visuaalisen kauneusleikkauksen etenemisen tässä matkan varrella.\n\
+    \ \n\
+    \Me uskomme palautteen voimaan. Haasta meidät palautteella niin tulet huomaamaan kehityksen seuraavaan pelisessioon mennessä.\n\
+    \ \n\
+    \Risut, ruusut ja pajut voi esimerkiksi johonkin seuraavista:\n\
+    \ \n\
+    \galla@galliwashere.com\n\
+    \0400246626\n\
+    \@jussigalla\n\
+    \ \n\
+    \innolla,\n\
+    \gällit\n\
+    \ \n\
+    \Play. Focus. Do. Repeat\n"
