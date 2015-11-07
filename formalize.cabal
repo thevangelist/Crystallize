@@ -22,6 +22,7 @@ library
       Formalize.Internal.Pdf
     , Formalize.Internal.Util
     , Formalize.Internal.Validate
+    , Formalize.Internal.Mailer
   build-depends:
       base >= 4.7 && < 5
     , bytestring >= 0.10
@@ -33,6 +34,8 @@ library
     , text >= 1.2
     , time >= 1.5
     , transformers >= 0.4
+    , smtp-mail >= 0.1
+    , mime-mail >= 0.4
 
 executable formalize-exe
   hs-source-dirs:      app

@@ -10,3 +10,6 @@ test-files
 
 # slack hook creds
 .slack
+
+# app config contains non public data
+*.cfg
