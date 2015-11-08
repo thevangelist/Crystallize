@@ -1,3 +1,6 @@
+html {
+    font-size: 62.5%;
+}
 html,
 body {
     margin: 0;
@@ -8,8 +11,26 @@ body {
     background: #FFF;
 }
 body {
-    font: 12px/18px "Open Sans", sans-serif;
+    font-family: "Semplicità", sans-serif;
+    font-size: 14px; font-size: 1.4rem;
+    line-height: 1.8rem;
     text-align: center;
+    background: url('background-pdf.jpg') top left no-repeat;
+    background-size: cover;
+    color: #FFF;
+}
+#logo {
+    background: #3a3a3a url('logo.jpg') top left no-repeat;
+    background-size: cover;
+    width: 109px;
+    height: 100px;
+    padding: 10px;
+}
+.flow {
+    width: 80%;
+    padding: 1.5em;
+    margin: 1.5em auto;
+    background: #3a3a3c;
 }
 p {
     margin: 0;
@@ -24,23 +45,30 @@ a:hover {
     color: #044859;
 }
 h1 {
-    font-size: 50px;
-    font-weight: 900;
-    line-height: 50px;
+    background: #3a3a3c;
+    position: absolute;
+    top: 0;
+    right: 0;
+    line-height: 120px;
+    height: 100px;
+    line-height: 100px;
+    font-size: 18px; font-size: 1.8rem;
+    font-weight: 600;
     text-transform: uppercase;
-    margin: 1em 0 1em 0;
-    padding: 1em 0 0 0;
-    border-bottom: 3px double black;
+    margin: 0;
+    padding: 10px;
+    text-shadow: 0 1px 3px #3a3a3c;
 }
 h2 {
-    margin: 1em 0 0.5em 0;
+    margin: 0;
     font-weight: 600;
-    font-size: 25px;
+    font-size: 25px; font-size: 2.5rem;
+    line-height: 3.2rem;
 }
 footer {
     font-weight bold;
     padding: 1em 0;
-    margin: 1em 0 1em 0;
+    background: #3a3a3c;
     line-height: 50px;
     position: absolute;
     bottom: 0;
