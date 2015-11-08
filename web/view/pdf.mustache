@@ -3,32 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Kiteyttäjä by Gälliwashere.com</title>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 </head>
 <body>
+    <div id="logo"></div>
     <h1>Kiteyttäjä</h1>
-    <p>Yrityksen nimi: <span>{{fdFormInput.fiCompany}}</span></p>
-    <p>Sähköposti: <span>{{fdFormInput.fiEmail}}</span></p>
-
-    <p>Pelilaudalle valikoituneet vihreät kortit: <span>{{fdFormInput.fiCategoryCardsGreen}}</span></p>
-    <p>Pelilaudalle valikoituneet punaiset kortit: <span>{{fdFormInput.fiCategoryCardsRed}}</span></p>
-
-    <h2>Vihreä Topaasia</h2>
-    <p>Topaasia: <span>{{fdFormInput.fiTopaasiaGreen}}</span></p>
-    <p>Miten kehitämme seuraavaan pelisessioon mennessä: <span>{{fdFormInput.fiImprovementGreen}}</span></p>
-    <p>Vetovastuu: <span>{{fdFormInput.fiLeadGreen}}</span></p>
-
-    <h2>Punainen Topaasia</h2>
-    <p>Topaasia: <span>{{fdFormInput.fiTopaasiaRed}}</span></p>
-    <p>Miten kehitämme seuraavaan pelisessioon mennessä: <span>{{fdFormInput.fiImprovementRed}}</span></p>
-    <p>Vetovastuu: <span>{{fdFormInput.fiLeadRed}}</span></p>
-
-    <br/>
-    <p>Viime pelisessiossa päätetyt kokeilut (ei täytetä ensimmäisessä pelisessiossa): <span>{{fdFormInput.fiLastUsed}}</span></p>
-    <p>Miten hyödyllinen pelisessio oli käytettyyn aikaan nähden (1-5, 1 = Hyödytön, 5 = erittäin hyödyllinen): <span>{{fdFormInput.fiRating}}</span></p>
-    <p>Lomake täytetty: <span>{{fdHumanTimestamp}}</span><p>
-    <p>Seuraavaa peliaikaa ehdotettu: <span>{{fdFormInput.fiNextSession}}</span></p>
-
+    <div class="flow">
+        <p>Yrityksen nimi: <span>{{fdFormInput.fiCompany}}</span></p>
+        <p>Sähköposti: <span>{{fdFormInput.fiEmail}}</span></p>
+    </div>
+    <div class="flow">
+        <p>Pelilaudalle valikoituneet vihreät kortit: <span>{{fdFormInput.fiCategoryCardsGreen}}</span></p>
+        <p>Pelilaudalle valikoituneet punaiset kortit: <span>{{fdFormInput.fiCategoryCardsRed}}</span></p>
+    </div>
+    <div class="flow">
+        <h2>Vihreä Topaasia</h2>
+        <p>Topaasia: <span>{{fdFormInput.fiTopaasiaGreen}}</span></p>
+        <p>Miten kehitämme seuraavaan pelisessioon mennessä: <span>{{fdFormInput.fiImprovementGreen}}</span></p>
+        <p>Vetovastuu: <span>{{fdFormInput.fiLeadGreen}}</span></p>
+        <br/>
+        <h2>Punainen Topaasia</h2>
+        <p>Topaasia: <span>{{fdFormInput.fiTopaasiaRed}}</span></p>
+        <p>Miten kehitämme seuraavaan pelisessioon mennessä: <span>{{fdFormInput.fiImprovementRed}}</span></p>
+        <p>Vetovastuu: <span>{{fdFormInput.fiLeadRed}}</span></p>
+    </div>
+    <div class="flow">
+        <p>Viime pelisessiossa päätetyt kokeilut (ei täytetä ensimmäisessä pelisessiossa): <span>{{fdFormInput.fiLastUsed}}</span></p>
+        <p>Miten hyödyllinen pelisessio oli käytettyyn aikaan nähden (1-5, 1 = Hyödytön, 5 = erittäin hyödyllinen): <span>{{fdFormInput.fiRating}}</span></p>
+        <p>Lomake täytetty: <span>{{fdHumanTimestamp}}</span><p>
+        <p>Seuraavaa peliaikaa ehdotettu: <span>{{fdFormInput.fiNextSession}}</span></p>
+    </div>
     <footer>We Make Organizational Development Games! - <a href="http://www.galliwashere.com" title="Gälliwashere.com">Gälliwashere.com</a> 2015 &copy;</footer>
 </body>
 </html>
