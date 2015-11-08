@@ -1,9 +1,9 @@
 port = 8080
 path = "files"
 smtp {
-  host = ""
+  host = "smtp.tnnet.fi"
   port = 8025
-  from = ""
-  user = ""
-  passwd = ""
+  from = "kiteyttaja@galliwashere.com"
+  user = "kiteyttaja@galliwashere.com"
+  passwd = "kiteytys"
 }
