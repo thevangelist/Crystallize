@@ -1,15 +1,5 @@
 /* modified https://github.com/chrisnager/ungrid */
 
-@font-face {
-    font-family: Semplicita Medium;
-    src: url(semplicita-medium.otf);
-}
-
-@font-face {
-    font-family: Semplicita Bold;
-    src: url(semplicita-bold.otf);
-}
-
 @media (min-width: 45em) {
     .row {
         width: 100%;
@@ -21,23 +11,18 @@
     }
 }
 .row {
-    border-spacing: 1em 0;
+    border-spacing: 10px 0;
 }
 ::selection {
     background: #FFF;
     color: #0892b6;
-}
-html {
-  font-size: 62.5%;
 }
 html,
 body {
     margin: 0;
 }
 body {
-    font-size: 18px; font-size: 1.8rem;
-    line-height: 3.2rem;
-    font-family: "Semplicita Medium", "Helvetica", sans-serif;
+    font: 16px/32px "Open Sans", "Helvetica", sans-serif;
     background: url(background.jpg);
     background-size: cover;
 }
@@ -53,50 +38,18 @@ body {
     padding: 0 1em;
 }
 #wrapper {
-    position: relative;
     width: 800px;
-    margin: 1em auto;
+    margin: 0 auto;
     background: rgba(255, 255, 255, 0.5);
-    padding: 140px 1em 1em 1em;
+    padding: 0 1.5em 1.5em 1.5em;
     box-sizing: border-box;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: #3a3a3a;
-    width: 100%;
-    height: 100px;
-    padding: 10px 0;
-}
-#logo {
-    background: #3a3a3a url('logo.jpg') top left no-repeat;
-    background-size: cover;
-    width: 109px;
-    height: 100px;
-    padding: 10px;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-h1 {
-    font-size: 50px; font-size: 5rem;
-    line-height: 110px;
-    color: #FFF;
-    font-family: "Semplicita Bold";
-    font-weight: bold;
-    text-align: center;
-    display: block;
-    text-transform: uppercase;
-    margin: 0;
-    vertical-align: middle;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
 }
 .flow {
-    background: rgba(255, 255, 255, 0.3);
-    padding: 1em;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    padding: 1.5em 1.5em 2.5em 1.5em;
     margin-bottom: 1.5em;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
 }
 .error {
     color: #d44f7e;
@@ -121,15 +74,21 @@ input:focus,
 textarea:focus {
     outline: none;
 }
-h2 {
-    font-family: "Semplicita Bold";
-    font-size: 20px; font-size: 2rem;
+h1 {
+    font-size: 50px;
+    color: #000;
+    font-weight: bold;
+    text-align: center;
+    display: block;
+    text-transform: uppercase;
     margin: 0;
+    padding: 1em 0;
 }
-h3 {
-    font-family: "Semplicita Medium";
+h2 {
     font-weight: 300;
-    border-bottom: 1px solid #000;
+    font-size: 20px;
+    margin: 0;
+    font-style: italic;
 }
 label{
     cursor: pointer;
@@ -153,17 +112,17 @@ input[type="email"]:focus,
 textarea:focus {
     outline: none;
     border: 1px solid #666;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 2px #AAA;
 }
 input[type="radio"] {
-    font-size: 50px; font-size: 5rem;
+    font-size: 50px;
 }
 textarea {
     max-width: 100%;
     max-height: 20em;
 }
 button {
-    font-size: 18px; font-size: 1.8rem;
+    font-size: 18px;
     width: 100%;
     padding: 1em;
     background: #0892b6;
@@ -179,7 +138,7 @@ button:hover {
     -o-transition: 0.3s ease-in-out;
     transition: 0.3s ease-in-out;
     background: #044859;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 4px #AAA;
     text-decoration: none;
 }
 button:hover:after {
@@ -202,16 +161,10 @@ footer {
     padding: 1em 0;
     background: rgba(255, 255, 255, 0.75);
     color: #000;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.2);
 }
 @media(max-width: 45em) {
-    h1 {
-        text-align: right;
-        padding-right: 0.5em;
-        font-size: 30px; font-size: 3rem;
-    }
     #wrapper {
-        margin: 0 auto;
         width: 100%;
     }
 }
