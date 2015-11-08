@@ -57,7 +57,7 @@ emailMessage =
     \ \n\
     \Me uskomme palautteen voimaan. Haasta meidät palautteella niin tulet huomaamaan kehityksen seuraavaan pelisessioon mennessä.\n\
     \ \n\
-    \Risut, ruusut ja pajut voi esimerkiksi johonkin seuraavista:\n\
+    \Risut, ruusut ja pajut voi ohjata esimerkiksi johonkin seuraavista:\n\
     \ \n\
     \galla@galliwashere.com\n\
     \0400246626\n\
