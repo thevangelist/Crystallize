@@ -20,6 +20,10 @@ createPDF fd = pdfHtml fd >>= html2PDF
 pdfOptions :: [String]
 pdfOptions = [ "--quiet"
              , "--user-style-sheet", "web/static/pdf.css"
+             , "-T", "0mm"
+             , "-R", "0mm"
+             , "-B", "0mm"
+             , "-L", "0mm"
              ]
 
 -- Use wkhtmltopdf tool for converting HTML to PDF.
