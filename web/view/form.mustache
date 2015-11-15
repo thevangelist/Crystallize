@@ -1,128 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="robots" content="noindex, nofollow">
-    <title>Kiteyttäjä by Gälliwashere.com</title>
-    <link rel="shortcut icon" href="/favicon.png" />
-    <link rel="stylesheet" type="text/css" href="/main.css" />
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Kiteyttäjä by Gälliwashere.com</title>
+  <link rel="shortcut icon" href="/favicon.png" />
+  <link rel="stylesheet" type="text/css" href="/main.css" />
+  <link rel="stylesheet" type="text/css" href="/noui/nouislider.min.css" />
 </head>
 <body>
-    {{#fdMessage.fmContent}}
-    <p id="errors">{{fdMessage.fmContent}}<a title="Sulje ilmoitus" href="#">&#9587;</a></p>
-    {{/fdMessage.fmContent}}
-    <div id="wrapper">
-        <header>
-            <div id="logo"></div>
-            <h1>Kiteyttäjä</h1>
-        </header>
-        <form id="crystallized" method="post" action="/submit">
-            <h2>Perustiedot</h2>
-            <div class="flow">
-                <label for="company">Yrityksen nimi</label>
-                <input class="required" type="text" name="crystal[company]" id="company" autofocus="autofocus" />
-                <label for="email">Sähköposti</label>
-                <input class="email" type="email" name="crystal[email]" id="email" />
-            </div>
-            <h2>Pelilaudalle valikoituneet kortit</h2>
-            <div class="flow">
-                <div class="row">
-                    <div class="col">
-                        <h3>Vihreät (otsikko)</h3>
-                        <label for="category-cards-green-1">Vihreä 1</label>
-                        <input type="text" id="category-cards-green-1" placeholder="Syötä ensimmäinen" name="crystal[category_cards_green_1]" />
-                        <label for="category-cards-green-2">Vihreä 2</label>
-                        <input type="text" id="category-cards-green-2" placeholder="Syötä tarvittaessa" name="crystal[category_cards_green_2]" />
-                        <label for="category-cards-green-3">Vihreä 3</label>
-                        <input type="text" id="category-cards-green-3" placeholder="Syötä tarvittaessa" name="crystal[category_cards_green_3]" />
-                        <label for="category-cards-green-4">Vihreä 4</label>
-                        <input type="text" id="category-cards-green-4" placeholder="Syötä tarvittaessa" name="crystal[category_cards_green_4]" />
-                        <label for="category-cards-green-5">Vihreä 5</label>
-                        <input type="text" id="category-cards-green-5" placeholder="Syötä tarvittaessa" name="crystal[category_cards_green_5]" />
-                        <label for="category-cards-green-6">Vihreä 6</label>
-                        <input type="text" id="category-cards-green-6" placeholder="Syötä tarvittaessa" name="crystal[category_cards_green_6]" />
-                    </div>
-                    <div class="col">
-                        <h3>Punaiset (otsikko)</h3>
-                        <label for="category-cards-red-1">Punainen 1</label>
-                        <input type="text" id="category-cards-red-1" placeholder="Syötä ensimmäinen" name="crystal[category_cards_red_1]" />
-                        <label for="category-cards-red-2">Punainen 2</label>
-                        <input type="text" id="category-cards-red-2" placeholder="Syötä tarvittaessa" name="crystal[category_cards_red_2]" />
-                        <label for="category-cards-red-3">Punainen 3</label>
-                        <input type="text" id="category-cards-red-3" placeholder="Syötä tarvittaessa" name="crystal[category_cards_red_3]" />
-                        <label for="category-cards-red-4">Punainen 4</label>
-                        <input type="text" id="category-cards-red-4" placeholder="Syötä tarvittaessa" name="crystal[category_cards_red_4]" />
-                        <label for="category-cards-red-5">Punainen 5</label>
-                        <input type="text" id="category-cards-red-5" placeholder="Syötä tarvittaessa" name="crystal[category_cards_red_5]" />
-                        <label for="category-cards-red-6">Punainen 6</label>
-                        <input type="text" id="category-cards-red-6" placeholder="Syötä tarvittaessa" name="crystal[category_cards_red_6]" />
-                    </div>
-                </div>
-            </div>
-            <h2>Vihreä Topaasia</h2>
-            <div class="flow">
-                <label for="topaasia-green">Oleellisin kortti kehityksen kannalta (otsikko)</label>
-                <input type="text" name="crystal[topaasia_green]" id="topaasia-green" />
-                <label for="improvement-green">Miten kehitämme seuraavaan pelisessioon mennessä (pienin kokeilu)</label>
-                <textarea id="improvement-green" name="crystal[improvement_green]" rows="3"></textarea>
-                <label for="lead-green">Vetovastuu</label>
-                <input type="text" name="crystal[lead_green]" id="lead-green" />
-            </div>
-            <h2>Punainen Topaasia</h2>
-            <div class="flow">
-                <label for="topaasia-red">Oleellisin kortti kehityksen kannalta (otsikko)</label>
-                <input type="text" name="crystal[topaasia_red]" id="topaasia-red" />
-                <label for="improvement-red">Miten kehitämme seuraavaan pelisessioon mennessä (pienin kokeilu)</label>
-                <textarea id="improvement-red" name="crystal[improvement_red]" rows="3"></textarea>
-                <label for="lead-red">Vetovastuu</label>
-                <input type="text" name="crystal[lead_red]" id="lead-red" />
-            </div>
-            <h2>Arviointi</h2>
-            <div class="flow">
-                <label>Miten hyödyllinen pelisessio oli käytettyyn aikaan nähden (1 = hyödytön, 5 = erittäin hyödyllinen)</label>
-                <div class="row">
-                    <div class="col">
-                        <label for="rating-1">1 &#9785;</label>
-                        <input class="required" type="radio" name="crystal[rating]" value="1" id="rating-1" />
-                    </div>
-                    <div class="col">
-                        <label for="rating-2">2</label>
-                        <input class="required" type="radio" name="crystal[rating]" value="2" id="rating-2" />
-                    </div>
-                    <div class="col">
-                        <label for="rating-3">3</label>
-                        <input class="required" type="radio" name="crystal[rating]" value="3" id="rating-3" />
-                    </div>
-                    <div class="col">
-                        <label for="rating-4">4</label>
-                        <input class="required" type="radio" name="crystal[rating]" value="4" id="rating-4" />
-                    </div>
-                    <div class="col">
-                        <label for="rating-5">5 &#9786;</label>
-                        <input class="required" type="radio" name="crystal[rating]" value="5" id="rating-5" />
-                    </div>
-                </div>
+{{#fdMessage.fmContent}}
+  <p id="errors">{{fdMessage.fmContent}}<a title="Sulje ilmoitus" href="#">&#9587;</a></p>
+{{/fdMessage.fmContent}}
+<div id="wrapper">
+  <header>
+    <div id="logo"></div>
+    <h1>Kiteyttäjä</h1>
+  </header>
+  <form id="crystallized" method="post" action="/submit">
 
-                <label>Viime pelisessiossa päätetyt kokeilut (ei täytetä ensimmäisessä pelisessiossa)</label>
-                <div class="row">
-                    <div class="col"><label for="last-used-yes">Tehty</label><input class="required" type="radio" name="crystal[last_used]" value="Tehty" id="last-used-yes" /></div>
-                    <div class="col"><label for="last-used-no">Tekemättä</label><input class="required" checked="checked" type="radio" name="crystal[last_used]" value="Tekemättä" id="last-used-no" /></div>
-                </div>
-            </div>
-
-            <h2>Seuraava pelisessio</h2>
-            <div class="flow">
-                <label for="next_session">Ehdota aikaa seuraavalle pelisessiolle</label>
-                <input type="text" name="crystal[next_session]" id="next_session" />
-            </div>
-
-            <button type="submit">Lähetä lomake</button>
-        </form>
+    <h2>Perustiedot</h2>
+    <div class="flow">
+      <div class="row">
+        <label for="company">Pelitunniste</label>
+        <input class="required" type="text" name="crystal[identifier]" id="identifier" autofocus="autofocus" />
+        <label for="email">Sähköposti</label>
+        <input class="email" type="email" name="crystal[email]" id="email" />
+      </div>
     </div>
-    <footer class="center">We Make Organizational Development Games! - <a href="http://www.galliwashere.com" title="Gälliwashere.com">Gälliwashere 2015 &copy;</a> | Software by <a href="http://www.qatsi.info" title="QATSI.info">QATSI</a></footer>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
-    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js" ></script>
-    <script type="text/javascript" src="/messages_fi.js"></script>
-    <script type="text/javascript" src="custom.js"></script>
+
+    <div id="slider-handles"></div>
+
+    <h2>Pelilaudalle valikoituneet kortit</h2>
+    <div class="flow">
+      <div class="row">
+        <div class="col">
+          <label for="strongest">Vahvin</label>
+          <input type="text" name="crystal[strongest]" id="strongest" />
+        </div>
+        <div class="col">
+          <label for="strongest-num">Arvosana</label>
+          <input id="strongest-num" type="number" min="1" max="4" />
+        </div>
+      </div>
+    </div>
+
+    <div class="flow">
+      <div class="row">
+        <div class="col">
+          <label for="weakest">Heikoin</label>
+          <input type="text" name="crystal[weakest]" id="weakest" />
+        </div>
+        <div class="col">
+          <label for="weakest-num">Arvosana</label>
+          <input id="weakest-num" type="number" min="1" max="4" />
+        </div>
+      </div>
+    </div>
+
+    <div class="flow">
+      <div class="row">
+        <div class="col">
+          <label for="important">Tärkein</label>
+          <input type="text" name="crystal[important]" id="important" />
+        </div>
+        <div class="col">
+          <label for="important-num">Arvosana</label>
+          <input id="important-num" type="number" min="1" max="4" />
+        </div>
+      </div>
+    </div>
+
+    <div class="flow">
+      <div class="row">
+        <div class="col">
+          <label for="hardest">Vaikein</label>
+          <input type="text" name="crystal[hardest]" id="hardest" />
+        </div>
+        <div class="col">
+          <label for="hardest-num">Arvosana</label>
+          <input id="hardest-num" type="number" min="1" max="4" />
+        </div>
+      </div>
+    </div>
+
+    <div class="flow">
+      <div class="row">
+        <div class="col">
+          <label for="tedious">Ikävin</label>
+          <input type="text" name="crystal[tedious]" id="tedious" />
+        </div>
+        <div class="col">
+          <label for="tedious-num">Arvosana</label>
+          <input id="tedious-num" type="number" min="1" max="4" />
+        </div>
+      </div>
+    </div>
+
+    <div class="flow">
+      <div class="row">
+        <div class="col">
+          <label for="inspiring">Innostavin</label>
+          <input type="text" name="crystal[inspiring]" id="inspiring" />
+        </div>
+        <div class="col">
+          <label for="inspiring-num">Arvosana</label>
+          <input id="inspiring-num" type="number" min="1" max="4" />
+        </div>
+      </div>
+    </div>
+
+    <div class="flow">
+      <div class="row">
+        <label for="topaasia">Topaasia</label>
+        <input type="text" name="crystal[topaasia]" id="topaasia" />
+      </div>
+      <div class="row">
+        <label for="openQuestion">Miksi tämä on meidän mielestämme tärkein (Topaasia)?</label>
+        <textarea id="openQuestion" name="crystal[openQuestion]"></textarea>
+      </div>
+      <div class="row">
+        <label for="topaasia">Käytettyyn aikaan nähden saatu hyöty</label>
+        <input type="text" name="crystal[topaasia]" id="topaasia" />
+      </div>
+    </div>
+    <button type="submit">Lähetä lomake</button>
+  </form>
+</div>
+<footer class="center">We Make Organizational Development Games! - <a href="http://www.galliwashere.com" title="Gälliwashere.com">Gälliwashere 2015 &copy;</a> | Software by <a href="http://www.qatsi.info" title="QATSI.info">QATSI</a></footer>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js" ></script>
+<script type="text/javascript" src="/messages_fi.js"></script>
+<script type="text/javascript" src="noui/nouislider.js"></script>
+<script type="text/javascript" src="custom.js"></script>
 </body>
 </html>
