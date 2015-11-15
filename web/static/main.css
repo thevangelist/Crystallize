@@ -24,8 +24,8 @@
     border-spacing: 1em 0;
 }
 ::selection {
-    background: #FFF;
-    color: #0892b6;
+    background: #DECADE;
+    color: #000;
 }
 html {
     font-size: 62.5%;
