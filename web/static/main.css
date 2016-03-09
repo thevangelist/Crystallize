@@ -9,17 +9,6 @@
     font-family: Semplicita Bold;
     src: url(semplicita-bold.otf);
 }
-
-@media (min-width: 55em) {
-    .row {
-        width: 100%;
-        display: table;
-        table-layout: fixed;
-    }
-    .col {
-        display: table-cell;
-    }
-}
 .row {
     border-spacing: 1em 0;
 }

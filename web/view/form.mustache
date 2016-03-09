@@ -6,7 +6,6 @@
   <title>Kiteyttäjä by Gälliwashere.com</title>
   <link rel="shortcut icon" href="/favicon.png" />
   <link rel="stylesheet" type="text/css" href="/main.css" />
-  <link rel="stylesheet" type="text/css" href="/noui/nouislider.min.css" />
 </head>
 <body>
 {{#fdMessage.fmContent}}
@@ -120,8 +119,8 @@
         <textarea id="openQuestion" name="crystal[openQuestion]"></textarea>
       </div>
       <div class="row">
-        <label for="topaasia">Käytettyyn aikaan nähden saatu hyöty</label>
-        <input type="text" name="crystal[topaasia]" id="topaasia" />
+        <label for="rating">Käytettyyn aikaan nähden saatu hyöty</label>
+        <input type="number" min="1" max="5" name="crystal[rating]" id="rating" />
       </div>
     </div>
     <button type="submit">Lähetä lomake</button>
@@ -131,7 +130,6 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
 <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js" ></script>
 <script type="text/javascript" src="/messages_fi.js"></script>
-<script type="text/javascript" src="noui/nouislider.js"></script>
 <script type="text/javascript" src="custom.js"></script>
 </body>
 </html>
