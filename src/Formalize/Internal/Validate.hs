@@ -42,19 +42,24 @@ errorForm ps =
 -- Create form from valid params map.
 goodForm :: Params -> FormInput
 goodForm ps =
-    FormInput (ps M.! "company")
+    FormInput (ps M.! "identifier")
               (ps M.! "email")
-              (greenCards ps)
-              (redCards ps)
-              (ps M.! "topaasia_green")
-              (ps M.! "topaasia_red")
-              (ps M.! "improvement_green")
-              (ps M.! "improvement_red")
-              (ps M.! "lead_green")
-              (ps M.! "lead_red")
-              (ps M.! "last_used")
+              (ps M.! "strongest")
+              (ps M.! "strongest_num")
+              (ps M.! "weakest")
+              (ps M.! "weakest_num")
+              (ps M.! "important")
+              (ps M.! "important_num")
+              (ps M.! "hardest")
+              (ps M.! "hardest_num")
+              (ps M.! "tedious")
+              (ps M.! "tedious_num")
+              (ps M.! "inspiring")
+              (ps M.! "inspiring_num")
+              (ps M.! "topaasia")
+              (ps M.! "openQuestion")
+              (ps M.! "benefitNum")
               (ps M.! "rating")
-              (ps M.! "next_session")
 
 -- Return list of maybe values from params.
 mValues :: Params -> [Maybe Text]
@@ -63,49 +68,23 @@ mValues ps = map (`M.lookup` ps) defaults
 defaultParams :: Params
 defaultParams = M.fromList $ zip defaults (repeat "")
 
-greenCards :: Params -> Text
-greenCards ps =
-    let cards = map (\ k -> ps M.! k) greens
-    in T.intercalate ", " $ filter (/= "") cards
-
-redCards :: Params -> Text
-redCards ps =
-    let cards = map (\ k -> ps M.! k) reds
-    in T.intercalate ", " $ filter (/= "") cards
-
 defaults :: [Text]
 defaults =
-    [ "company"
+    [ "identifier"
     , "email"
-    , "topaasia_green"
-    , "topaasia_red"
-    , "improvement_green"
-    , "improvement_red"
-    , "lead_green"
-    , "lead_red"
-    , "last_used"
+    , "strongest"
+    , "strongest_num"
+    , "weakest"
+    , "weakest_num"
+    , "important"
+    , "important_num"
+    , "hardest"
+    , "hardest_num"
+    , "tedious"
+    , "tedious_num"
+    , "inspiring"
+    , "inspiring_num"
+    , "topaasia"
+    , "openQuestion"
     , "rating"
-    , "next_session"
-    ]
-    ++ reds
-    ++ greens
-
-reds :: [Text]
-reds =
-    [ "category_cards_red_1"
-    , "category_cards_red_2"
-    , "category_cards_red_3"
-    , "category_cards_red_4"
-    , "category_cards_red_5"
-    , "category_cards_red_6"
-    ]
-
-greens :: [Text]
-greens =
-    [ "category_cards_green_1"
-    , "category_cards_green_2"
-    , "category_cards_green_3"
-    , "category_cards_green_4"
-    , "category_cards_green_5"
-    , "category_cards_green_6"
     ]

@@ -8,19 +8,23 @@ import           Data.Text       (Text)
 type PDF = ByteString
 
 data FormInput = FormInput
-    { fiCompany            :: Text
-    , fiEmail              :: Text
-    , fiCategoryCardsGreen :: Text
-    , fiCategoryCardsRed   :: Text
-    , fiTopaasiaGreen      :: Text
-    , fiTopaasiaRed        :: Text
-    , fiImprovementGreen   :: Text
-    , fiImprovementRed     :: Text
-    , fiLeadGreen          :: Text
-    , fiLeadRed            :: Text
-    , fiLastUsed           :: Text
-    , fiRating             :: Text
-    , fiNextSession        :: Text
+    { fiIdentifier   :: Text
+    , fiEmail        :: Text
+    , fiStrongest    :: Text
+    , fiStrongestNum :: Int
+    , fiWeakest      :: Text
+    , fiWeakestNum   :: Int
+    , fiImportant    :: Text
+    , fiImportantNum :: Int
+    , fiHardest      :: Text
+    , fiHardestNum   :: Int
+    , fiTedious      :: Text
+    , fiTediousNum   :: Int
+    , fiInspiring    :: Text
+    , fiInspiringNum :: Int
+    , fiTopaasia     :: Text
+    , fiOpenQuestion :: Text
+    , fiRating       :: Int
     } deriving (Data, Typeable)
 
 data FlashMessage = FlashMessage
